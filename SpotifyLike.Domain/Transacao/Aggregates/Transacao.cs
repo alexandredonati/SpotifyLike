@@ -1,4 +1,4 @@
-﻿using SpotifyLike.Domain.Notificacao.Aggregates;
+﻿using SpotifyLike.Domain.Notificacao;
 using SpotifyLike.Domain.Core.ValueObject;
 using SpotifyLike.Domain.Transacao.ValueObject;
 using System;
@@ -74,8 +74,8 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
 
             var transacaoRepetidaPorMerchant = ultimasTransacoes?
                                                 .Where(x => x.Recebedor.Nome.ToUpper() == this.Recebedor.Nome.ToUpper()
-                                                       && x.Valor == this.Valor)
-                                                .Count() == REPETICAO_TRANSACAO_MERCHANT;
+                                                       && x.Valor.Valor == this.Valor.Valor)?
+                                                .Count() > REPETICAO_TRANSACAO_MERCHANT;
 
             if (transacaoRepetidaPorMerchant)
                 throw new Exception("Transacao Duplicada para o mesmo cartão e o mesmo Comerciante");

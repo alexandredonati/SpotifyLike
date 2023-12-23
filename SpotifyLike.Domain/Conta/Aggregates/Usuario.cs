@@ -13,7 +13,7 @@ namespace SpotifyLike.Domain.Conta.Aggregates
 {
     public class Usuario
     {
-        private const string NOME_PLAYLIST_FAV = "Favoritas";
+        public const string NOME_PLAYLIST_FAV = "Favoritas";
         public Guid Id { get; set; }
         public String Nome { get; set; }
         public String Email { get; set; }
@@ -48,14 +48,14 @@ namespace SpotifyLike.Domain.Conta.Aggregates
             };
         }
 
-        private void AdicionarCartao(Cartao cartao)
+        public void AdicionarCartao(Cartao cartao)
         {
             cartao.Proprietario = this;
 
             this.Cartoes.Add(cartao);
         }
 
-        private void AtualizarAssinatura(Plano plano, Cartao cartao)
+        public void AtualizarAssinatura(Plano plano, Cartao cartao)
         {
             //Debitar o valor do plano no cartao
             cartao.RealizarTransacao(new Merchant() { Nome = plano.Tipo }, new Monetario(plano.Valor), plano.Descricao);

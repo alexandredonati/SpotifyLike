@@ -12,10 +12,11 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
     public class Cartao
     {
         public Guid Id { get; set; }
+        public String Numero { get; set; }
         public bool Ativo { get; set; }
         public DateTime DataVencimento { get; set; }
         public Monetario Limite { get; set; }
-        public List<Transacao> Transacoes { get; set; }
+        public List<Transacao> Transacoes { get; set; } = new List<Transacao>();
         public Usuario Proprietario { get; set; }
 
         public void RealizarTransacao(Merchant recebedor, Monetario valor, string descricao = "")
@@ -40,7 +41,7 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
             if (this.DataVencimento < DateTime.Today.AddDays(1))
             {
                 this.Ativo = false;
-                throw new Exception("Cartão não é valido pois já passou sua data de vencimento")
+                throw new Exception("Cartão não é valido pois já passou sua data de vencimento");
             }
 
             if (this.Ativo == false)

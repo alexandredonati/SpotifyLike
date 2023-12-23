@@ -1,6 +1,5 @@
 ﻿using SpotifyLike.Domain.Core.ValueObject;
 using SpotifyLike.Domain.Streaming.ValueObject;
-using SpotifyLike.Domain.Streaming.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

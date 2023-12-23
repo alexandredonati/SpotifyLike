@@ -12,7 +12,7 @@ namespace SpotifyLike.Domain.Streaming.ValueObject
 
         public Periodo(int dias)
         {
-            if (dias >= 0)
+            if (dias <= 0)
                 throw new ArgumentException("Número de dias não pode ser nulo ou negativo.");
 
             NumDias = dias; 

@@ -12,12 +12,10 @@ namespace SpotifyLike.Domain.Core.ValueObject
 
         public Cnpj(string valor) 
         {
-            ValidateCnpj(valor);
-
-            this.Valor = valor;
+            this.Valor = ValidateCnpj(valor);
         }
 
-        public void ValidateCnpj(string valor) 
+        public String ValidateCnpj(string valor) 
         {
             int[] Multiplicadores1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] Multiplicadores2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -59,12 +57,14 @@ namespace SpotifyLike.Domain.Core.ValueObject
             else
                 Resto = 11 - Resto;
 
-            Digito = Digito + Resto.ToString();
+            Digito = Resto.ToString();
             
             TempCnpj = TempCnpj + Digito;
 
             if (valor != TempCnpj)
                 throw new Exception($"O Cnpj {valor} não é válido.");
+
+            return valor;
         }
     }
 }

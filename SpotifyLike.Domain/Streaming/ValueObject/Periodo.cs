@@ -10,6 +10,7 @@ namespace SpotifyLike.Domain.Streaming.ValueObject
     {
         public int NumDias { get; set; }
 
+        public Periodo() { }
         public Periodo(int dias)
         {
             if (dias <= 0)

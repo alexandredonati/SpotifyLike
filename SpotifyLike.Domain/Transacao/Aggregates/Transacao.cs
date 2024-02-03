@@ -22,6 +22,8 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
         public String Descricao { get; set; }
         public Boolean Autorizada { get; set; }
 
+
+        public Transacao() { }
         public Transacao(Cartao origem, Merchant recebedor, Monetario valor, string descricao)
         {
             this.Id = Guid.NewGuid();

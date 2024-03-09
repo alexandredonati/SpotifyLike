@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "AutoMapper/13.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Azure.Core/1.25.0": {
         "type": "package",
         "dependencies": {
@@ -1665,6 +1681,21 @@
           }
         }
       },
+      "SpotifyLike.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "SpotifyLike.Domain": "1.0.0",
+          "SpotifyLike.Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SpotifyLike.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SpotifyLike.Application.dll": {}
+        }
+      },
       "SpotifyLike.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -1695,6 +1726,21 @@
     }
   },
   "libraries": {
+    "AutoMapper/13.0.1": {
+      "sha512": "/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "type": "package",
+      "path": "automapper/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.13.0.1.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net6.0/AutoMapper.dll",
+        "lib/net6.0/AutoMapper.xml"
+      ]
+    },
     "Azure.Core/1.25.0": {
       "sha512": "X8Dd4sAggS84KScWIjEbFAdt2U1KDolQopTPoHVubG2y3CM54f9l6asVrP5Uy384NWXjsspPYaJgz5xHc+KvTA==",
       "type": "package",
@@ -4694,6 +4740,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "SpotifyLike.Application/1.0.0": {
+      "type": "project",
+      "path": "../SpotifyLike.Application/SpotifyLike.Application.csproj",
+      "msbuildProject": "../SpotifyLike.Application/SpotifyLike.Application.csproj"
+    },
     "SpotifyLike.Domain/1.0.0": {
       "type": "project",
       "path": "../SpotifyLike.Domain/SpotifyLike.Domain.csproj",
@@ -4710,30 +4761,26 @@
       "Microsoft.EntityFrameworkCore >= 8.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.1",
+      "SpotifyLike.Application >= 1.0.0",
       "SpotifyLike.Domain >= 1.0.0",
       "SpotifyLike.Repository >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alexandre.dpereira\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Donati\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Api\\SpotifyLike.Api.csproj",
+      "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Api\\SpotifyLike.Api.csproj",
       "projectName": "SpotifyLike.Api",
-      "projectPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Api\\SpotifyLike.Api.csproj",
-      "packagesPath": "C:\\Users\\alexandre.dpereira\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Api\\obj\\",
+      "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Api\\SpotifyLike.Api.csproj",
+      "packagesPath": "C:\\Users\\Donati\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Api\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\alexandre.dpereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Donati\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4741,18 +4788,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
-              "projectPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj"
+            "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Application\\SpotifyLike.Application.csproj": {
+              "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Application\\SpotifyLike.Application.csproj"
             },
-            "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj": {
-              "projectPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj"
+            "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
+              "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj"
+            },
+            "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj": {
+              "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj"
             }
           }
         }

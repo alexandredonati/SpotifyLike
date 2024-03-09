@@ -10,3 +10,15 @@ C:\Users\alexandre.dpereira\Documents\GitProjects\SpotifyLike\SpotifyLike.Domain
 C:\Users\alexandre.dpereira\Documents\GitProjects\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\refint\SpotifyLike.Domain.dll
 C:\Users\alexandre.dpereira\Documents\GitProjects\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.pdb
 C:\Users\alexandre.dpereira\Documents\GitProjects\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\ref\SpotifyLike.Domain.dll
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\bin\Debug\net8.0\SpotifyLike.Domain.deps.json
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\bin\Debug\net8.0\SpotifyLike.Domain.dll
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\bin\Debug\net8.0\SpotifyLike.Domain.pdb
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.AssemblyInfoInputs.cache
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.AssemblyInfo.cs
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.sourcelink.json
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.dll
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\refint\SpotifyLike.Domain.dll
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.pdb
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\ref\SpotifyLike.Domain.dll

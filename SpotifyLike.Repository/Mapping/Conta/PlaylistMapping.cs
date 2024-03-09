@@ -23,7 +23,7 @@ namespace SpotifyLike.Repository.Mapping.Conta
             builder.Property(x => x.IsPublica).IsRequired();
             builder.Property(x => x.DataCriacao).IsRequired();
 
-            builder.HasMany(x => x.Musicas).WithMany(x => x.Playlists);
+            builder.HasMany(x => x.Musicas);
 
         }
     }

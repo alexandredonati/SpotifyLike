@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj": {}
+    "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
+    "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
         "projectName": "SpotifyLike.Domain",
-        "projectPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
-        "packagesPath": "C:\\Users\\alexandre.dpereira\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
+        "packagesPath": "C:\\Users\\Donati\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alexandre.dpereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Donati\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,21 +59,17 @@
         }
       }
     },
-    "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj": {
+    "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj",
         "projectName": "SpotifyLike.Tests",
-        "projectPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj",
-        "packagesPath": "C:\\Users\\alexandre.dpereira\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Tests\\obj\\",
+        "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj",
+        "packagesPath": "C:\\Users\\Donati\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alexandre.dpereira\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Donati\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,15 +77,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
-                "projectPath": "C:\\Users\\alexandre.dpereira\\Documents\\GitProjects\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj"
+              "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
+                "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj"
               }
             }
           }

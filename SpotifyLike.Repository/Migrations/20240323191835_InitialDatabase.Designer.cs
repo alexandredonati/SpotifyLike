@@ -12,8 +12,8 @@ using SpotifyLike.Repository;
 namespace SpotifyLike.Repository.Migrations
 {
     [DbContext(typeof(SpotifyLikeContext))]
-    [Migration("20240203164729_SpotifyDatabase")]
-    partial class SpotifyDatabase
+    [Migration("20240323191835_InitialDatabase")]
+    partial class InitialDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,17 +25,47 @@ namespace SpotifyLike.Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AlbumArtista", b =>
+                {
+                    b.Property<Guid>("AlbumsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ArtistasId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("AlbumsId", "ArtistasId");
+
+                    b.HasIndex("ArtistasId");
+
+                    b.ToTable("AlbumArtista");
+                });
+
+            modelBuilder.Entity("ArtistaMusica", b =>
+                {
+                    b.Property<Guid>("ArtistasId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MusicasId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ArtistasId", "MusicasId");
+
+                    b.HasIndex("MusicasId");
+
+                    b.ToTable("ArtistaMusica");
+                });
+
             modelBuilder.Entity("MusicaPlaylist", b =>
                 {
                     b.Property<Guid>("MusicasId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PlaylistsId")
+                    b.Property<Guid>("PlaylistId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("MusicasId", "PlaylistsId");
+                    b.HasKey("MusicasId", "PlaylistId");
 
-                    b.HasIndex("PlaylistsId");
+                    b.HasIndex("PlaylistId");
 
                     b.ToTable("MusicaPlaylist");
                 });
@@ -169,17 +199,12 @@ namespace SpotifyLike.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ArtistaId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ArtistaId");
 
                     b.ToTable("Album", (string)null);
                 });
@@ -190,11 +215,15 @@ namespace SpotifyLike.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AlbumId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Backdrop")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid?>("MusicaId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -202,10 +231,6 @@ namespace SpotifyLike.Repository.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AlbumId");
-
-                    b.HasIndex("MusicaId");
 
                     b.ToTable("Artista", (string)null);
                 });
@@ -219,9 +244,6 @@ namespace SpotifyLike.Repository.Migrations
                     b.Property<Guid>("AlbumId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AlbumId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -230,8 +252,6 @@ namespace SpotifyLike.Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AlbumId");
-
-                    b.HasIndex("AlbumId1");
 
                     b.ToTable("Musica", (string)null);
                 });
@@ -277,14 +297,9 @@ namespace SpotifyLike.Repository.Migrations
                     b.Property<Guid>("ProprietarioId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UsuarioId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProprietarioId");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Cartao", (string)null);
                 });
@@ -297,9 +312,6 @@ namespace SpotifyLike.Repository.Migrations
 
                     b.Property<bool>("Autorizada")
                         .HasColumnType("bit");
-
-                    b.Property<Guid>("CartaoId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CartaoOrigemId")
                         .HasColumnType("uniqueidentifier");
@@ -314,11 +326,39 @@ namespace SpotifyLike.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CartaoId");
-
                     b.HasIndex("CartaoOrigemId");
 
                     b.ToTable("Transacao", (string)null);
+                });
+
+            modelBuilder.Entity("AlbumArtista", b =>
+                {
+                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Album", null)
+                        .WithMany()
+                        .HasForeignKey("AlbumsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Artista", null)
+                        .WithMany()
+                        .HasForeignKey("ArtistasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ArtistaMusica", b =>
+                {
+                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Artista", null)
+                        .WithMany()
+                        .HasForeignKey("ArtistasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Musica", null)
+                        .WithMany()
+                        .HasForeignKey("MusicasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MusicaPlaylist", b =>
@@ -331,7 +371,7 @@ namespace SpotifyLike.Repository.Migrations
 
                     b.HasOne("SpotifyLike.Domain.Conta.Aggregates.Playlist", null)
                         .WithMany()
-                        .HasForeignKey("PlaylistsId")
+                        .HasForeignKey("PlaylistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -409,37 +449,11 @@ namespace SpotifyLike.Repository.Migrations
                     b.Navigation("Remetente");
                 });
 
-            modelBuilder.Entity("SpotifyLike.Domain.Streaming.Aggregates.Album", b =>
-                {
-                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Artista", null)
-                        .WithMany("Albums")
-                        .HasForeignKey("ArtistaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SpotifyLike.Domain.Streaming.Aggregates.Artista", b =>
-                {
-                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Album", null)
-                        .WithMany("Artistas")
-                        .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Musica", null)
-                        .WithMany("Artistas")
-                        .HasForeignKey("MusicaId");
-                });
-
             modelBuilder.Entity("SpotifyLike.Domain.Streaming.Aggregates.Musica", b =>
                 {
-                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Album", null)
+                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Album", "Album")
                         .WithMany("Musicas")
                         .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SpotifyLike.Domain.Streaming.Aggregates.Album", "Album")
-                        .WithMany()
-                        .HasForeignKey("AlbumId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -450,7 +464,8 @@ namespace SpotifyLike.Repository.Migrations
 
                             b1.Property<int>("Valor")
                                 .HasMaxLength(50)
-                                .HasColumnType("int");
+                                .HasColumnType("int")
+                                .HasColumnName("Duracao");
 
                             b1.HasKey("MusicaId");
 
@@ -474,7 +489,8 @@ namespace SpotifyLike.Repository.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<decimal>("Valor")
-                                .HasColumnType("decimal(18,2)");
+                                .HasColumnType("decimal(18,2)")
+                                .HasColumnName("Valor");
 
                             b1.HasKey("PlanoId");
 
@@ -511,15 +527,9 @@ namespace SpotifyLike.Repository.Migrations
             modelBuilder.Entity("SpotifyLike.Domain.Transacao.Aggregates.Cartao", b =>
                 {
                     b.HasOne("SpotifyLike.Domain.Conta.Aggregates.Usuario", "Proprietario")
-                        .WithMany()
+                        .WithMany("Cartoes")
                         .HasForeignKey("ProprietarioId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SpotifyLike.Domain.Conta.Aggregates.Usuario", null)
-                        .WithMany("Cartoes")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.OwnsOne("SpotifyLike.Domain.Core.ValueObject.Monetario", "Limite", b1 =>
@@ -547,14 +557,8 @@ namespace SpotifyLike.Repository.Migrations
 
             modelBuilder.Entity("SpotifyLike.Domain.Transacao.Aggregates.Transacao", b =>
                 {
-                    b.HasOne("SpotifyLike.Domain.Transacao.Aggregates.Cartao", null)
-                        .WithMany("Transacoes")
-                        .HasForeignKey("CartaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SpotifyLike.Domain.Transacao.Aggregates.Cartao", "CartaoOrigem")
-                        .WithMany()
+                        .WithMany("Transacoes")
                         .HasForeignKey("CartaoOrigemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -583,7 +587,8 @@ namespace SpotifyLike.Repository.Migrations
 
                             b1.Property<string>("Email")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("nvarchar(max)")
+                                .HasColumnName("MerchantEmail");
 
                             b1.Property<string>("Nome")
                                 .IsRequired()
@@ -641,19 +646,7 @@ namespace SpotifyLike.Repository.Migrations
 
             modelBuilder.Entity("SpotifyLike.Domain.Streaming.Aggregates.Album", b =>
                 {
-                    b.Navigation("Artistas");
-
                     b.Navigation("Musicas");
-                });
-
-            modelBuilder.Entity("SpotifyLike.Domain.Streaming.Aggregates.Artista", b =>
-                {
-                    b.Navigation("Albums");
-                });
-
-            modelBuilder.Entity("SpotifyLike.Domain.Streaming.Aggregates.Musica", b =>
-                {
-                    b.Navigation("Artistas");
                 });
 
             modelBuilder.Entity("SpotifyLike.Domain.Transacao.Aggregates.Cartao", b =>

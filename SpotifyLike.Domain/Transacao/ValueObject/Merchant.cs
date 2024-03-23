@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Domain.Transacao.ValueObject
 {
-    public  record Merchant
+    public record Merchant
     {
         public Cnpj Cnpj { get; set; }
-        public String Nome {  get; set; }
-        public String Email {  get; set; }
+        public string Nome {  get; set; }
+        public string Email {  get; set; }
     }
 }

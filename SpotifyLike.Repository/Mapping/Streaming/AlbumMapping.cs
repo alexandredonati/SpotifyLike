@@ -15,16 +15,9 @@ namespace SpotifyLike.Repository.Mapping.Streaming
         public void Configure(EntityTypeBuilder<Album> builder)
         {
             builder.ToTable(nameof(Album));
-
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(50);
-
-            builder.HasMany(x => x.Musicas).WithOne().OnDelete(DeleteBehavior.Cascade);
-            builder.HasMany(x => x.Artistas).WithOne().OnDelete(DeleteBehavior.Cascade);
-
-
-
         }
     }
 }

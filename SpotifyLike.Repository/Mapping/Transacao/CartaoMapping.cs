@@ -22,14 +22,13 @@ namespace SpotifyLike.Repository.Mapping.Transacao
             builder.Property(x => x.Ativo).IsRequired();
             builder.Property(x => x.Numero).IsRequired().HasMaxLength(100);
             builder.Property(x => x.DataVencimento).IsRequired();
-
-            builder.OwnsOne<Monetario>(d => d.Limite, c =>
-            {
-                c.Property(x => x.Valor).HasColumnName("Limite").IsRequired();
-            });
-
-            builder.HasMany(x => x.Transacoes).WithOne();
-
+            builder.OwnsOne<Monetario>(
+                d => d.Limite, 
+                    c =>
+                        {
+                            c.Property(x => x.Valor).HasColumnName("Limite").IsRequired();
+                        });
+            builder.HasMany(x => x.Transacoes).WithOne(x => x.CartaoOrigem);
         }
     }
 }

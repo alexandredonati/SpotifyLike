@@ -9,8 +9,11 @@ namespace SpotifyLike.Domain.Streaming.Aggregates
     public class Artista
     {
         public Guid Id { get; set; }
-        public String Nome { get; set; }
-        public List<Album> Albums { get; set; } = new List<Album>();
+        public string Nome { get; set; } = null!;
+        public string? Descricao { get; set; }
+        public string? Backdrop { get; set; }
+        public IList<Musica> Musicas { get; set; } = new List<Musica>();
+        public IList<Album> Albums { get; set; } = new List<Album>();
 
         public void AdicionarAlbum(Album album) 
         { 

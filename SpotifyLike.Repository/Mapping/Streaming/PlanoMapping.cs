@@ -24,15 +24,14 @@ namespace SpotifyLike.Repository.Mapping.Streaming
 
             builder.OwnsOne<Monetario>(d => d.Valor, c =>
             {
-                c.Property(x => x.Valor).IsRequired();
+                c.Property(x => x.Valor).HasColumnName("Valor").IsRequired();
             });
-
-            builder.OwnsOne<Periodo>(d => d.Vigencia, c =>
-            {
-                c.Property(x => x.NumDias).HasColumnName("PeriodoVigenciaDias").IsRequired();
-            });
-
-
+            builder.OwnsOne<Periodo>(
+                d => d.Vigencia, 
+                    c =>
+                        {
+                            c.Property(x => x.NumDias).HasColumnName("PeriodoVigenciaDias").IsRequired();
+                        });
         }
     }
 }

@@ -6,18 +6,44 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SpotifyLike.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class SpotifyDatabase : Migration
+    public partial class InitialDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Album",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Album", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Artista",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Descricao = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Backdrop = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Artista", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Plano",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Tipo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Valor_Valor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Valor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PeriodoVigenciaDias = table.Column<int>(type: "int", nullable: false),
                     Descricao = table.Column<string>(type: "nvarchar(1024)", maxLength: 1024, nullable: false)
                 },
@@ -27,27 +53,13 @@ namespace SpotifyLike.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Album",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ArtistaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Album", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Musica",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Titulo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    AlbumId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Duracao_Valor = table.Column<int>(type: "int", maxLength: 50, nullable: false),
-                    AlbumId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    AlbumId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Duracao = table.Column<int>(type: "int", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,37 +70,54 @@ namespace SpotifyLike.Repository.Migrations
                         principalTable: "Album",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AlbumArtista",
+                columns: table => new
+                {
+                    AlbumsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ArtistasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AlbumArtista", x => new { x.AlbumsId, x.ArtistasId });
                     table.ForeignKey(
-                        name: "FK_Musica_Album_AlbumId1",
-                        column: x => x.AlbumId1,
+                        name: "FK_AlbumArtista_Album_AlbumsId",
+                        column: x => x.AlbumsId,
                         principalTable: "Album",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AlbumArtista_Artista_ArtistasId",
+                        column: x => x.ArtistasId,
+                        principalTable: "Artista",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Artista",
+                name: "ArtistaMusica",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    AlbumId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    MusicaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    ArtistasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MusicasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artista", x => x.Id);
+                    table.PrimaryKey("PK_ArtistaMusica", x => new { x.ArtistasId, x.MusicasId });
                     table.ForeignKey(
-                        name: "FK_Artista_Album_AlbumId",
-                        column: x => x.AlbumId,
-                        principalTable: "Album",
+                        name: "FK_ArtistaMusica_Artista_ArtistasId",
+                        column: x => x.ArtistasId,
+                        principalTable: "Artista",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Artista_Musica_MusicaId",
-                        column: x => x.MusicaId,
+                        name: "FK_ArtistaMusica_Musica_MusicasId",
+                        column: x => x.MusicasId,
                         principalTable: "Musica",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -122,8 +151,7 @@ namespace SpotifyLike.Repository.Migrations
                     Ativo = table.Column<bool>(type: "bit", nullable: false),
                     DataVencimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Limite = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ProprietarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProprietarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -139,21 +167,14 @@ namespace SpotifyLike.Repository.Migrations
                     CartaoOrigemId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MerchantCnpj = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MerchantNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Recebedor_Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MerchantEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Valor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Descricao = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Autorizada = table.Column<bool>(type: "bit", nullable: false),
-                    CartaoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Autorizada = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Transacao", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Transacao_Cartao_CartaoId",
-                        column: x => x.CartaoId,
-                        principalTable: "Cartao",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transacao_Cartao_CartaoOrigemId",
                         column: x => x.CartaoOrigemId,
@@ -167,11 +188,11 @@ namespace SpotifyLike.Repository.Migrations
                 columns: table => new
                 {
                     MusicasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PlaylistsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PlaylistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MusicaPlaylist", x => new { x.MusicasId, x.PlaylistsId });
+                    table.PrimaryKey("PK_MusicaPlaylist", x => new { x.MusicasId, x.PlaylistId });
                     table.ForeignKey(
                         name: "FK_MusicaPlaylist_Musica_MusicasId",
                         column: x => x.MusicasId,
@@ -235,19 +256,14 @@ namespace SpotifyLike.Repository.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Album_ArtistaId",
-                table: "Album",
-                column: "ArtistaId");
+                name: "IX_AlbumArtista_ArtistasId",
+                table: "AlbumArtista",
+                column: "ArtistasId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Artista_AlbumId",
-                table: "Artista",
-                column: "AlbumId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Artista_MusicaId",
-                table: "Artista",
-                column: "MusicaId");
+                name: "IX_ArtistaMusica_MusicasId",
+                table: "ArtistaMusica",
+                column: "MusicasId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Assinatura_PlanoId",
@@ -265,24 +281,14 @@ namespace SpotifyLike.Repository.Migrations
                 column: "ProprietarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cartao_UsuarioId",
-                table: "Cartao",
-                column: "UsuarioId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Musica_AlbumId",
                 table: "Musica",
                 column: "AlbumId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Musica_AlbumId1",
-                table: "Musica",
-                column: "AlbumId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MusicaPlaylist_PlaylistsId",
+                name: "IX_MusicaPlaylist_PlaylistId",
                 table: "MusicaPlaylist",
-                column: "PlaylistsId");
+                column: "PlaylistId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notificacao_DestinatarioId",
@@ -300,11 +306,6 @@ namespace SpotifyLike.Repository.Migrations
                 column: "ProprietarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transacao_CartaoId",
-                table: "Transacao",
-                column: "CartaoId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Transacao_CartaoOrigemId",
                 table: "Transacao",
                 column: "CartaoOrigemId");
@@ -313,14 +314,6 @@ namespace SpotifyLike.Repository.Migrations
                 name: "IX_Usuario_FavoritasId",
                 table: "Usuario",
                 column: "FavoritasId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Album_Artista_ArtistaId",
-                table: "Album",
-                column: "ArtistaId",
-                principalTable: "Artista",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Assinatura_Usuario_UsuarioId",
@@ -338,16 +331,9 @@ namespace SpotifyLike.Repository.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Cartao_Usuario_UsuarioId",
-                table: "Cartao",
-                column: "UsuarioId",
-                principalTable: "Usuario",
-                principalColumn: "Id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_MusicaPlaylist_Playlist_PlaylistsId",
+                name: "FK_MusicaPlaylist_Playlist_PlaylistId",
                 table: "MusicaPlaylist",
-                column: "PlaylistsId",
+                column: "PlaylistId",
                 principalTable: "Playlist",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
@@ -379,12 +365,14 @@ namespace SpotifyLike.Repository.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Album_Artista_ArtistaId",
-                table: "Album");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_Playlist_Usuario_ProprietarioId",
                 table: "Playlist");
+
+            migrationBuilder.DropTable(
+                name: "AlbumArtista");
+
+            migrationBuilder.DropTable(
+                name: "ArtistaMusica");
 
             migrationBuilder.DropTable(
                 name: "Assinatura");
@@ -399,16 +387,16 @@ namespace SpotifyLike.Repository.Migrations
                 name: "Transacao");
 
             migrationBuilder.DropTable(
-                name: "Plano");
-
-            migrationBuilder.DropTable(
-                name: "Cartao");
-
-            migrationBuilder.DropTable(
                 name: "Artista");
 
             migrationBuilder.DropTable(
+                name: "Plano");
+
+            migrationBuilder.DropTable(
                 name: "Musica");
+
+            migrationBuilder.DropTable(
+                name: "Cartao");
 
             migrationBuilder.DropTable(
                 name: "Album");

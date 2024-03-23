@@ -17,24 +17,22 @@ namespace SpotifyLike.Repository.Mapping.Conta
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
             builder.ToTable(nameof(Usuario));
-
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(150);
             builder.Property(x => x.DataNascimento).IsRequired();
-
             builder.HasOne(x => x.Favoritas);
-            builder.HasMany(x => x.Cartoes).WithOne().OnDelete(DeleteBehavior.NoAction);
+            builder.HasMany(x => x.Cartoes).WithOne(x => x.Proprietario);
             builder.HasMany(x => x.Assinaturas).WithOne();
             builder.HasMany(x => x.Playlists).WithOne(x => x.Proprietario);
             builder.HasMany(x => x.Notificacoes).WithOne(x => x.Destinatario);
-
-            builder.OwnsOne<Senha>(d => d.Senha, c =>
-            {
-                c.Property(x => x.HexValue).HasColumnName("SenhaHex").IsRequired();
-            });
-
+            builder.OwnsOne<Senha>(
+                d => d.Senha,
+                c =>
+                    {
+                        c.Property(x => x.HexValue).HasColumnName("SenhaHex").IsRequired();
+                    });
         }
     }
 }

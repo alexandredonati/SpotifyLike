@@ -44,7 +44,7 @@ namespace SpotifyLike.Application.Streaming
 
         public AlbumDto AssociarAlbum(AlbumDto dto)
         {
-            var artista = this.ArtistRepository.GetById(dto.BandaId);
+            var artista = this.ArtistRepository.GetById(dto.ArtistId);
 
             if (artista == null)
             {

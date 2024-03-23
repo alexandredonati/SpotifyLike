@@ -16,15 +16,12 @@ namespace SpotifyLike.Repository.Mapping.Conta
         public void Configure(EntityTypeBuilder<Playlist> builder)
         {
             builder.ToTable(nameof(Playlist));
-
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Titulo).IsRequired().HasMaxLength(50);
             builder.Property(x => x.IsPublica).IsRequired();
             builder.Property(x => x.DataCriacao).IsRequired();
-
-            builder.HasMany(x => x.Musicas);
-
+            builder.HasMany(x => x.Musicas).WithMany();
         }
     }
 }

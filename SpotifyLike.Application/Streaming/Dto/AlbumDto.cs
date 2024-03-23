@@ -13,7 +13,7 @@ namespace SpotifyLike.Application.Streaming.Dto
         public Guid Id { get; set; }
 
         [Required]
-        public Guid ArtistId { get; set; }
+        public IEnumerable<Guid> ArtistIds { get; set; }
 
         [Required]
         public string Nome { get; set; }

@@ -22,10 +22,10 @@ namespace SpotifyLike.Repository.Mapping.Conta
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(150);
             builder.Property(x => x.DataNascimento).IsRequired();
-            builder.HasOne(x => x.Favoritas);
             builder.HasMany(x => x.Cartoes).WithOne(x => x.Proprietario);
             builder.HasMany(x => x.Assinaturas).WithOne();
             builder.HasMany(x => x.Playlists).WithOne(x => x.Proprietario);
+            builder.Property(x => x.FavoritePlaylistId).IsRequired();
             builder.HasMany(x => x.Notificacoes).WithOne(x => x.Destinatario);
             builder.OwnsOne<Senha>(
                 d => d.Senha,

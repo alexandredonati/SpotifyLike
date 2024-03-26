@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SpotifyLike.Application.Streaming;
 using SpotifyLike.Application.Streaming.Dto;
-using SpotifyLike.Domain.Streaming.Aggregates;
-using SpotifyLike.Repository;
+using SpotifyLike.Domain;
 
 namespace SpotifyLike.Api.Controllers
 {
@@ -18,6 +16,9 @@ namespace SpotifyLike.Api.Controllers
             _artistService = artistService;
         }
 
+        /// <summary>
+        /// Obtém uma coleção com todos os artistas.
+        /// </summary>
         [HttpGet]
         public IActionResult GetArtists()
         {
@@ -26,10 +27,13 @@ namespace SpotifyLike.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetArtistById(Guid id)
+        /// <summary>
+        /// Obtém um artista pelo seu ID.
+        /// </summary>
+        [HttpGet("{idArtist}")]
+        public IActionResult GetArtistById(Guid idArtist)
         {
-            var result = this._artistService.GetArtistById(id);
+            var result = this._artistService.GetArtistById(idArtist);
             if (result == null)
             {
                 return NotFound();
@@ -37,22 +41,33 @@ namespace SpotifyLike.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Adiciona um novo artista.
+        /// </summary>
         [HttpPost]
         public IActionResult NewArtist([FromBody] ArtistDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
-
-            var result = this._artistService.CreateArtist(dto);
-
-            return Created($"/artists/{result.Id}", result);
+            try
+            {
+                var result = this._artistService.CreateArtist(dto);
+                return Created($"/artists/{result.Id}", result);
+            }
+            catch (BusinessRuleException ex) 
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
 
-        [HttpGet("{idArtista}/albums")]
-        public IActionResult GetArtistAlbums(Guid idArtista) 
+        /// <summary>
+        /// Obtém uma coleção com todos os albums de um artista.
+        /// </summary>
+        [HttpGet("{idArtist}/albums")]
+        public IActionResult GetArtistAlbums(Guid idArtist) 
         {
-            var result = this._artistService.GetArtistAlbums(idArtista);
+            var result = this._artistService.GetArtistAlbums(idArtist);
 
             if (result == null)
                 return NotFound();

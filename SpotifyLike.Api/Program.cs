@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using SpotifyLike.Application.Conta;
 using SpotifyLike.Application.Conta.Profile;
 using SpotifyLike.Application.Streaming;
@@ -31,6 +32,20 @@ builder.Services.AddScoped<AlbumRepository>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<ArtistService>();
 builder.Services.AddScoped<AlbumService>();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1",
+        new OpenApiInfo
+        {
+            Title = "SpotifyLike API",
+            Version = "v1"
+        }
+     );
+
+    var filePath = Path.Combine(System.AppContext.BaseDirectory, "SpotifyLike.Api.xml");
+    c.IncludeXmlComments(filePath);
+});
 
 var app = builder.Build();
 

@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SpotifyLike.Application.Streaming;
 using SpotifyLike.Application.Streaming.Dto;
+using SpotifyLike.Domain;
 
 namespace SpotifyLike.Api.Controllers
 {
@@ -15,10 +15,13 @@ namespace SpotifyLike.Api.Controllers
             _albumService = albumService;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetAlbumById(Guid id)
+        /// <summary>
+        /// Obtém um álbum pelo seu ID.
+        /// </summary>
+        [HttpGet("{idAlbum}")]
+        public IActionResult GetAlbumById(Guid idAlbum)
         {
-            var result = this._albumService.GetAlbum(id);
+            var result = this._albumService.GetAlbumById(idAlbum);
             if (result == null)
             {
                 return NotFound();
@@ -26,16 +29,23 @@ namespace SpotifyLike.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Adiciona um novo álbum.
+        /// </summary>
         [HttpPost]
         public IActionResult NewAlbum([FromBody] AlbumDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
-
-            var result = this._albumService.CreateAlbum(dto);
-
-            return Created($"/albums/{result.Id}", result);
+            try
+            {
+                var result = this._albumService.CreateAlbum(dto);
+                return Created($"/albums/{result.Id}", result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-
     }
 }

@@ -109,7 +109,7 @@ namespace SpotifyLike.Repository.Migrations
                     b.Property<bool>("IsPublica")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("ProprietarioId")
+                    b.Property<Guid>("ProprietarioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Titulo")
@@ -138,7 +138,7 @@ namespace SpotifyLike.Repository.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<Guid>("FavoritasId")
+                    b.Property<Guid>("FavoritePlaylistId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Nome")
@@ -147,8 +147,6 @@ namespace SpotifyLike.Repository.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FavoritasId");
 
                     b.ToTable("Usuario", (string)null);
                 });
@@ -214,18 +212,18 @@ namespace SpotifyLike.Repository.Migrations
 
                     b.Property<string>("Backdrop")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
@@ -392,19 +390,15 @@ namespace SpotifyLike.Repository.Migrations
                 {
                     b.HasOne("SpotifyLike.Domain.Conta.Aggregates.Usuario", "Proprietario")
                         .WithMany("Playlists")
-                        .HasForeignKey("ProprietarioId");
+                        .HasForeignKey("ProprietarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Proprietario");
                 });
 
             modelBuilder.Entity("SpotifyLike.Domain.Conta.Aggregates.Usuario", b =>
                 {
-                    b.HasOne("SpotifyLike.Domain.Conta.Aggregates.Playlist", "Favoritas")
-                        .WithMany()
-                        .HasForeignKey("FavoritasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.OwnsOne("SpotifyLike.Domain.Core.ValueObject.Senha", "Senha", b1 =>
                         {
                             b1.Property<Guid>("UsuarioId")
@@ -422,8 +416,6 @@ namespace SpotifyLike.Repository.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("UsuarioId");
                         });
-
-                    b.Navigation("Favoritas");
 
                     b.Navigation("Senha")
                         .IsRequired();
@@ -583,7 +575,6 @@ namespace SpotifyLike.Repository.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("Email")
-                                .IsRequired()
                                 .HasColumnType("nvarchar(max)")
                                 .HasColumnName("MerchantEmail");
 
@@ -617,8 +608,7 @@ namespace SpotifyLike.Repository.Migrations
                                         .HasForeignKey("MerchantTransacaoId");
                                 });
 
-                            b1.Navigation("Cnpj")
-                                .IsRequired();
+                            b1.Navigation("Cnpj");
                         });
 
                     b.Navigation("CartaoOrigem");

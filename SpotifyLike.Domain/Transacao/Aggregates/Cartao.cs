@@ -1,23 +1,18 @@
 ﻿using SpotifyLike.Domain.Conta.Aggregates;
 using SpotifyLike.Domain.Core.ValueObject;
 using SpotifyLike.Domain.Transacao.ValueObject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpotifyLike.Domain.Transacao.Aggregates
 {
     public class Cartao
     {
         public Guid Id { get; set; }
-        public String Numero { get; set; }
         public bool Ativo { get; set; }
+        public String Numero { get; set; }
         public DateTime DataVencimento { get; set; }
         public Monetario Limite { get; set; }
-        public List<Transacao> Transacoes { get; set; } = new List<Transacao>();
         public Usuario Proprietario { get; set; }
+        public List<Transacao> Transacoes { get; set; } = new List<Transacao>();
 
         public void RealizarTransacao(Merchant recebedor, Monetario valor, string descricao = "")
         {
@@ -41,11 +36,11 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
             if (this.DataVencimento < DateTime.Today.AddDays(1))
             {
                 this.Ativo = false;
-                throw new Exception("Cartão não é valido pois já passou sua data de vencimento");
+                throw new BusinessRuleException("Cartão não é valido pois já passou sua data de vencimento");
             }
 
             if (this.Ativo == false)
-                throw new Exception("Cartão não está ativo");
+                throw new BusinessRuleException("Cartão não está ativo");
         }
     }
 }

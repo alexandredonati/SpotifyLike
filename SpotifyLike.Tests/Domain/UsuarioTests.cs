@@ -57,8 +57,14 @@ namespace SpotifyLike.Tests.Domain
             Assert.True(usuario.Cartoes.Count > 0);
             Assert.Same(usuario.Cartoes[0], cartao);
 
-            Assert.True(usuario.Favoritas.Titulo == Usuario.NOME_PLAYLIST_FAV);
-            Assert.False(usuario.Favoritas.IsPublica);
+            var favoritePlaylist =
+                        usuario
+                        .Playlists
+                        .Where(playlist => playlist.Id == usuario.FavoritePlaylistId)
+                        .First();
+            Assert.True(favoritePlaylist.Titulo == Usuario.NOME_PLAYLIST_FAV);
+
+            Assert.False(favoritePlaylist.IsPublica);
         }
 
         [Fact]

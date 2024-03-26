@@ -283,3 +283,5 @@ C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLik
 C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Api\obj\Debug\net8.0\SpotifyLike.Api.genruntimeconfig.cache
 C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Api\obj\Debug\net8.0\ref\SpotifyLike.Api.dll
 C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Api\obj\Debug\net8.0\SpotifyLike.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Api\bin\Debug\net8.0\SpotifyLike.Api.xml
+C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Api\obj\Debug\net8.0\SpotifyLike.Api.xml

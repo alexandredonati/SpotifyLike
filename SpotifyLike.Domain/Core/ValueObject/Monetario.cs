@@ -12,7 +12,7 @@ namespace SpotifyLike.Domain.Core.ValueObject
 
         public static implicit operator decimal(Monetario monetario) { return monetario.Valor; }
         public static implicit operator Monetario(decimal valor) { return new Monetario(valor); }
-
+        public Monetario() { }
         public Monetario(decimal valor)
         {
             if (valor < 0)

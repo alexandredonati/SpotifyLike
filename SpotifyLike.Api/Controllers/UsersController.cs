@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SpotifyLike.Application.Conta;
 using SpotifyLike.Application.Conta.Dto;
+using SpotifyLike.Domain;
 
 namespace SpotifyLike.Api.Controllers
 {
@@ -15,21 +15,47 @@ namespace SpotifyLike.Api.Controllers
             _usuarioService = usuarioService;
         }
 
+        /// <summary>
+        /// Adiciona um novo usuário
+        /// </summary>
         [HttpPost]
-        public IActionResult Criar(UsuarioDto dto)
+        public IActionResult Create([FromBody] UsuarioDto dto)
         {
             if (ModelState is { IsValid: false})
                 return BadRequest();
-
-            var result = this._usuarioService.Criar(dto);
-
-            return Created($"users/{result.Id}", result);
+            try
+            {
+                var result = this._usuarioService.Create(dto);
+                return Created($"users/{result.Id}", result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Obter(Guid id)
+        /// <summary>
+        /// Obtém uma coleção com todos os usuários cadastrados.
+        /// </summary>
+        [HttpGet]
+        public IActionResult GetAllUsers()
         {
-            var result = this._usuarioService.Obter(id);
+            var result = this._usuarioService.GetUsers();
+
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+
+        }
+
+        /// <summary>
+        /// Obtém um usuário pelo seu ID.
+        /// </summary>
+        [HttpGet("{idUser}")]
+        public IActionResult Obter(Guid idUser)
+        {
+            var result = this._usuarioService.GetUserById(idUser);
 
             if (result == null)
                 return NotFound();

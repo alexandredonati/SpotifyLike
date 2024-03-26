@@ -27,12 +27,12 @@ namespace SpotifyLike.Repository.Mapping.Transacao
                 c =>
                     {
                         c.Property(x => x.Nome).HasColumnName("MerchantNome").IsRequired();
-                        c.Property(x => x.Email).HasColumnName("MerchantEmail").IsRequired();
+                        c.Property(x => x.Email).HasColumnName("MerchantEmail");
                         c.OwnsOne<Cnpj>(
                             d => d.Cnpj, 
                             c =>
                                 {
-                                    c.Property(x => x.Valor).HasColumnName("MerchantCnpj").IsRequired();
+                                    c.Property(x => x.Valor).HasColumnName("MerchantCnpj");
                                 });
                     });
             builder.OwnsOne<Monetario>(

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SpotifyLike.Api</name>
+    </assembly>
+    <members>
+        <member name="M:SpotifyLike.Api.Controllers.AlbumsController.GetAlbumById(System.Guid)">
+            <summary>
+            Obtém um álbum pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.AlbumsController.NewAlbum(SpotifyLike.Application.Streaming.Dto.AlbumDto)">
+            <summary>
+            Adiciona um novo álbum.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtists">
+            <summary>
+            Obtém uma coleção com todos os artistas.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtistById(System.Guid)">
+            <summary>
+            Obtém um artista pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.NewArtist(SpotifyLike.Application.Streaming.Dto.ArtistDto)">
+            <summary>
+            Adiciona um novo artista.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtistAlbums(System.Guid)">
+            <summary>
+            Obtém uma coleção com todos os albums de um artista.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.Create(SpotifyLike.Application.Conta.Dto.UsuarioDto)">
+            <summary>
+            Adiciona um novo usuário
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.GetAllUsers">
+            <summary>
+            Obtém uma coleção com todos os usuários cadastrados.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.Obter(System.Guid)">
+            <summary>
+            Obtém um usuário pelo seu ID.
+            </summary>
+        </member>
+    </members>
+</doc>

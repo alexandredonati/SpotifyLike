@@ -1,13 +1,7 @@
 ﻿using AutoMapper;
 using SpotifyLike.Application.Streaming.Dto;
-using SpotifyLike.Application.Streaming.Profile;
 using SpotifyLike.Domain.Streaming.Aggregates;
 using SpotifyLike.Repository.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpotifyLike.Application.Streaming
 {
@@ -46,8 +40,8 @@ namespace SpotifyLike.Application.Streaming
         {
             var artista = this.ArtistRepository.GetById(IdArtista);
 
-            if (artista == null)
-                throw new Exception("Artista não encontrado.");
+            //if (artista == null)
+            //    throw new Exception("Artista não encontrado.");
 
             var albums = artista.Albums;
 

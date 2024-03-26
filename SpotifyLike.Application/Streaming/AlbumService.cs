@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using SpotifyLike.Application.Streaming.Dto;
+using SpotifyLike.Domain;
 using SpotifyLike.Domain.Streaming.Aggregates;
 using SpotifyLike.Repository.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpotifyLike.Application.Streaming
 {
@@ -44,7 +40,7 @@ namespace SpotifyLike.Application.Streaming
                         .Select(x => x.artistId);
             if (artistIdsNotFound.Count() > 0)
             {
-                throw new Exception(
+                throw new BusinessRuleException(
                     String.Format(
                         "ID(s) de Artista(s) não encontrada(s): {0}. Primeiro, é necessário adicionar todos os artistas do álbum.",
                         String.Join(", ", artistIdsNotFound))
@@ -60,11 +56,11 @@ namespace SpotifyLike.Application.Streaming
             var result = this.AlbumToAlbumDto(outputAlbum);
             return result;
         }
-        public AlbumDto GetAlbum(Guid id)
+        public AlbumDto GetAlbumById(Guid id)
         {
             var album = this.AlbumRepository.GetById(id);
-            if (album == null)
-                throw new Exception("Album não encontrado.");
+            //if (album == null)
+            //    throw new BusinessRuleException("Album não encontrado.");
             var result = AlbumToAlbumDto(album);
             return result;
         }

@@ -21,8 +21,8 @@ namespace SpotifyLike.Domain.Conta.Aggregates
         public Senha Senha { get; set; }
         public List<Cartao> Cartoes { get; set; } = new List<Cartao>();
         public List<Assinatura> Assinaturas { get; set; } = new List<Assinatura>();
-        public List<Playlist> Playlists { get; set; } = new List<Playlist>();
-        public Playlist Favoritas { get; set; }
+        public List<Playlist> Playlists { get; set; } = null!;
+        public Guid FavoritePlaylistId { get; set; }
         public List<Notificacao.Notificacao> Notificacoes { get; set; } = new List<Notificacao.Notificacao>();
 
 
@@ -38,14 +38,18 @@ namespace SpotifyLike.Domain.Conta.Aggregates
 
             this.AtualizarAssinatura(plano, cartao);
 
-            this.Favoritas = new Playlist()
+            this.Playlists = new List<Playlist>()
             {
-                Id = Guid.NewGuid(),
-                Titulo = NOME_PLAYLIST_FAV,
-                IsPublica = false,
-                DataCriacao = DateTime.Now,
-                Proprietario = this
+                new Playlist()
+                {
+                    Id = Guid.NewGuid(),
+                    Titulo = NOME_PLAYLIST_FAV,
+                    IsPublica = false,
+                    DataCriacao = DateTime.Now,
+                    Proprietario = this
+                }
             };
+            this.FavoritePlaylistId = this.Playlists[0].Id;
         }
 
         public void AdicionarCartao(Cartao cartao)
@@ -95,12 +99,18 @@ namespace SpotifyLike.Domain.Conta.Aggregates
 
         public void FavoritarMusica(Musica musica)
         {
-            this.Favoritas.Adicionar(musica);
+            this.Playlists
+                .Where(playlist => playlist.Id == this.FavoritePlaylistId)
+                .First()
+                .Adicionar(musica);
         }
 
         public void DesfavoritarMusica(Musica musica)
         {
-            this.Favoritas.Remover(musica);
+            this.Playlists
+                .Where(playlist => playlist.Id == this.FavoritePlaylistId)
+                .First()
+                .Remover(musica);
         }
     }
 }

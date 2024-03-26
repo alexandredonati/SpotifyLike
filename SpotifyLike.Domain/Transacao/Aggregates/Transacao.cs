@@ -54,7 +54,7 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
         private void VerificaLimite()
         {
             if (this.CartaoOrigem.Limite < this.Valor)
-                throw new Exception("O cartão não possui limite para esta transação.");
+                throw new BusinessRuleException("O cartão não possui limite para esta transação.");
         }
 
         private void ValidarFrequencia()
@@ -63,7 +63,7 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
                                                           x.DataTransacao >= DateTime.Now.AddMinutes(-INTERVALO_TRANSACAO));
 
             if (ultimasTransacoes?.Count() >= LIMITE_TRANSACOES_INTERVALO)
-                throw new Exception(
+                throw new BusinessRuleException(
                     String.Format(
                         "Cartão utilizado mais de {0} vez{1} em um período de {2} minuto{3}",
                         LIMITE_TRANSACOES_INTERVALO,
@@ -78,7 +78,7 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
                                                 .Count() > REPETICAO_TRANSACAO_MERCHANT;
 
             if (transacaoRepetidaPorMerchant)
-                throw new Exception("Transacao Duplicada para o mesmo cartão e o mesmo Comerciante");
+                throw new BusinessRuleException("Transacao Duplicada para o mesmo cartão e o mesmo Comerciante");
 
         }
 

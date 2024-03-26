@@ -11,8 +11,8 @@ namespace SpotifyLike.Domain.Notificacao
     public class Notificacao
     {
         public Guid Id { get; set; }
-        public Usuario Remetente { get; set; }
-        public Usuario Destinatario { get; set; }
+        public virtual Usuario Remetente { get; set; }
+        public virtual Usuario Destinatario { get; set; }
         public string Mensagem { get; set; }
         public string Titulo { get; set; }
         public DateTime Instante { get; set; }

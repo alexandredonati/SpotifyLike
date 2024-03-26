@@ -11,8 +11,8 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
         public String Numero { get; set; }
         public DateTime DataVencimento { get; set; }
         public Monetario Limite { get; set; }
-        public Usuario Proprietario { get; set; }
-        public List<Transacao> Transacoes { get; set; } = new List<Transacao>();
+        public virtual Usuario Proprietario { get; set; }
+        public virtual List<Transacao> Transacoes { get; set; } = new List<Transacao>();
 
         public void RealizarTransacao(Merchant recebedor, Monetario valor, string descricao = "")
         {

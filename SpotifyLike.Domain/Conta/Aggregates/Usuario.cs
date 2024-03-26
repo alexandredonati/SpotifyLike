@@ -18,12 +18,12 @@ namespace SpotifyLike.Domain.Conta.Aggregates
         public String Nome { get; set; }
         public String Email { get; set; }
         public DateTime DataNascimento { get; set; }
-        public Senha Senha { get; set; }
-        public List<Cartao> Cartoes { get; set; } = new List<Cartao>();
-        public List<Assinatura> Assinaturas { get; set; } = new List<Assinatura>();
-        public List<Playlist> Playlists { get; set; } = null!;
+        public virtual Senha Senha { get; set; }
+        public virtual IList<Cartao> Cartoes { get; set; } = new List<Cartao>();
+        public virtual IList<Assinatura> Assinaturas { get; set; } = new List<Assinatura>();
+        public virtual IList<Playlist> Playlists { get; set; } = null!;
         public Guid FavoritePlaylistId { get; set; }
-        public List<Notificacao.Notificacao> Notificacoes { get; set; } = new List<Notificacao.Notificacao>();
+        public virtual IList<Notificacao.Notificacao> Notificacoes { get; set; } = new List<Notificacao.Notificacao>();
 
 
         public void CriarConta(string nome, string email, string senha, DateTime dataNascimento, Cartao cartao, Plano plano) 
@@ -67,11 +67,11 @@ namespace SpotifyLike.Domain.Conta.Aggregates
             //Desativo caso tenha alguma assinatura ativa
             DesativarAssinaturaAtiva();
 
-            Assinatura NovaAssinatura = new Assinatura(plano);
-            NovaAssinatura.Ativar();
+            Assinatura novaAssinatura = new Assinatura(plano);
+            novaAssinatura.Ativar();
 
             //Adiciona uma nova assinatura
-            this.Assinaturas.Add(NovaAssinatura);
+            this.Assinaturas.Add(novaAssinatura);
 
         }
 

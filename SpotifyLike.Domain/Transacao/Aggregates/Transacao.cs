@@ -16,11 +16,11 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
         private const int REPETICAO_TRANSACAO_MERCHANT = 1;
         public Guid Id { get; set; }
         public DateTime DataTransacao { get; set; }
-        public Cartao CartaoOrigem { get; set; }
-        public Merchant Recebedor { get; set; }
+        public virtual Cartao CartaoOrigem { get; set; }
+        public virtual Merchant Recebedor { get; set; }
         public Monetario Valor { get; set; }
-        public String Descricao { get; set; }
-        public Boolean Autorizada { get; set; }
+        public string Descricao { get; set; }
+        public bool Autorizada { get; set; }
         public Transacao() { }
         public Transacao(Cartao origem, Merchant recebedor, Monetario valor, string descricao)
         {

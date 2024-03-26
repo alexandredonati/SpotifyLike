@@ -20,7 +20,7 @@ namespace SpotifyLike.Application.Conta.Profile
                 {
                     var plano = s.Assinaturas?.FirstOrDefault(a => a.Ativo)?.Plano;
 
-                    if (plano == null)
+                    if (plano != null)
                         d.PlanoId = plano.Id;
 
                 });

@@ -11,9 +11,9 @@ namespace SpotifyLike.Domain.Streaming.Aggregates
     public class Musica
     {
         public Guid Id { get; set; }
-        public List<Artista> Artistas { get; set; } = null!;
+        public virtual List<Artista> Artistas { get; set; } = null!;
         public string Titulo { get; set; } = null!;
-        public Album Album { get; set; } = null!;
+        public virtual Album Album { get; set; } = null!;
         public Duracao Duracao { get; set; } = null!;
     }
 }

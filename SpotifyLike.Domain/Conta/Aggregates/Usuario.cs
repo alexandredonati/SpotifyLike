@@ -72,7 +72,6 @@ namespace SpotifyLike.Domain.Conta.Aggregates
 
             //Adiciona uma nova assinatura
             this.Assinaturas.Add(novaAssinatura);
-
         }
 
         private void DesativarAssinaturaAtiva()

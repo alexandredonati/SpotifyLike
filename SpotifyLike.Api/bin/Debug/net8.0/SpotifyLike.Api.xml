@@ -14,6 +14,11 @@
             Adiciona um novo álbum.
             </summary>
         </member>
+        <member name="M:SpotifyLike.Api.Controllers.AlbumsController.AddSongs(SpotifyLike.Application.Streaming.Dto.AlbumDto)">
+            <summary>
+            Adiciona novas músicas a um álbum existente.
+            </summary>
+        </member>
         <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtists">
             <summary>
             Obtém uma coleção com todos os artistas.
@@ -34,9 +39,19 @@
             Obtém uma coleção com todos os albums de um artista.
             </summary>
         </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtistSongs(System.Guid)">
+            <summary>
+            Obtém uma coleção com todas as músicas de um artista.
+            </summary>
+        </member>
         <member name="M:SpotifyLike.Api.Controllers.UsersController.Create(SpotifyLike.Application.Conta.Dto.UsuarioDto)">
             <summary>
             Adiciona um novo usuário
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.UpdateSubscription(SpotifyLike.Application.Conta.Dto.UsuarioDto)">
+            <summary>
+            Atualiza a assinatura de um usuário existente
             </summary>
         </member>
         <member name="M:SpotifyLike.Api.Controllers.UsersController.GetAllUsers">

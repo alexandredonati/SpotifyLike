@@ -20,6 +20,7 @@ namespace SpotifyLike.Application.Streaming
         }
         public AlbumDto CreateAlbum(AlbumDto dto)
         {
+            var novoAlbum = this.AlbumDtoToAlbum(dto);
             var artists =
                     dto.ArtistIds
                         .Select(
@@ -28,7 +29,6 @@ namespace SpotifyLike.Application.Streaming
                                 var artist = this.ArtistRepository.GetById(artistId);
                                 if (null != artist)
                                 {
-                                    var novoAlbum = this.AlbumDtoToAlbum(dto);
                                     artist.AdicionarAlbum(novoAlbum);
                                 }
                                 return (artistId, artist);
@@ -36,7 +36,7 @@ namespace SpotifyLike.Application.Streaming
                         );
             var artistIdsNotFound =
                     artists
-                        .Where(x => x.artist is not null)
+                        .Where(x => x.artist is null)
                         .Select(x => x.artistId);
             if (artistIdsNotFound.Count() > 0)
             {
@@ -46,21 +46,35 @@ namespace SpotifyLike.Application.Streaming
                         String.Join(", ", artistIdsNotFound))
                 );
             }
-            {
-                foreach (Artista artist in artists.Select(x => x.artist))
-                {
-                    this.ArtistRepository.Update(artist);
-                }
-            }
-            var outputAlbum = this.AlbumRepository.GetById(dto.Id);
-            var result = this.AlbumToAlbumDto(outputAlbum);
+            //foreach (Artista artist in artists.Select(x => x.artist))
+            //{
+            //    this.ArtistRepository.Update(artist);
+            //}
+            this.AlbumRepository.Save(novoAlbum);
+            //var outputAlbum = this.AlbumRepository.GetById(dto.Id);
+            //var result = this.AlbumToAlbumDto(outputAlbum);
+            var result = this.AlbumToAlbumDto(novoAlbum);
             return result;
+        }
+        public AlbumDto AddSongsToAlbum(Guid albumId, IList<MusicDto> musicDto)
+        {
+            var album = this.AlbumRepository.GetById(albumId);
+            if (null == album)
+            {
+                throw new BusinessRuleException("Album não encontrado.");
+            }
+            var musicas = this.Mapper.Map<IList<Musica>>(musicDto);
+            album.AdicionarMusicas(musicas);
+            this.AlbumRepository.Update(album);
+            var result = this.AlbumToAlbumDto(album);
+            return result;
+
         }
         public AlbumDto GetAlbumById(Guid id)
         {
             var album = this.AlbumRepository.GetById(id);
-            //if (album == null)
-            //    throw new BusinessRuleException("Album não encontrado.");
+            if (album == null)
+                throw new BusinessRuleException("Album não encontrado.");
             var result = AlbumToAlbumDto(album);
             return result;
         }
@@ -87,7 +101,8 @@ namespace SpotifyLike.Application.Streaming
             AlbumDto dto = new AlbumDto()
             {
                 Id = album.Id,
-                Nome = album.Nome
+                Nome = album.Nome,
+                ArtistIds = album.Artistas.Select(artist => artist.Id)
             };
             foreach (var item in album.Musicas)
             {

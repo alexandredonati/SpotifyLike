@@ -10,17 +10,27 @@ namespace SpotifyLike.Domain.Streaming.Aggregates
     {
         public Guid Id { get; set; }
         public string Nome { get; set; } = null!;
-        public virtual ICollection<Artista> Artistas { get; set; } = null!;
-        public virtual IList<Musica> Musicas { get; set; } = null!;
+        public virtual IList<Artista> Artistas { get; set; } = new List<Artista>();
+        public virtual IList<Musica> Musicas { get; set; } = new List<Musica>();
 
         public void AdicionarMusica(Musica musica)
         { 
             this.Musicas.Add(musica);
         }
-        //public void AdicionarMusica(List<Musica> musicas) 
-        //{
-        //    this.Musicas.AddRange(musicas);
-        //}
+        public void AdicionarMusicas(IList<Musica> musicas)
+        {
+            if (this.Musicas is List<Musica> listMusicas) 
+            {
+                listMusicas.AddRange(musicas);
+            }
+            else
+            {
+                foreach (var musica in musicas)
+                {
+                    this.Musicas.Add(musica);
+                }
+            }
+        }
 
     }
 }

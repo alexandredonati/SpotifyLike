@@ -26,7 +26,26 @@ namespace SpotifyLike.Api.Controllers
             try
             {
                 var result = this._usuarioService.Create(dto);
-                return Created($"users/{result.Id}", result);
+                return Created($"Users/{result.Id}", result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Atualiza a assinatura de um usuário existente
+        /// </summary>
+        [HttpPost("Subscriptions")]
+        public IActionResult UpdateSubscription([FromBody] UsuarioDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+            try
+            {
+                var result = this._usuarioService.UpdateSubscription(dto);
+                return Created($"Users/{result.Id}", result);
             }
             catch (BusinessRuleException ex)
             {

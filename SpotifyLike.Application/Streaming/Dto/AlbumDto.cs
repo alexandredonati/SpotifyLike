@@ -18,13 +18,6 @@ namespace SpotifyLike.Application.Streaming.Dto
         [Required]
         public string Nome { get; set; }
 
-        public List<MusicDto> Musicas { get; set; } = new List<MusicDto>();
-    }
-
-    public class MusicDto
-    {
-        public Guid Id { get; set; }
-        public string Nome { get; set; }
-        public Duracao Duracao { get; set; }
+        public IList<MusicDto> Musicas { get; set; } = new List<MusicDto>();
     }
 }

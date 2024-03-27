@@ -43,6 +43,28 @@ namespace SpotifyLike.Application.Conta
             return result;
 
         }
+
+        public UsuarioDto UpdateSubscription(UsuarioDto dto)
+        {
+            var usuario = this.UsuarioRepository.GetById(dto.Id);
+            if (null == usuario)
+                throw new BusinessRuleException("Usuário não encontrado.");
+
+            Plano plano = this.PlanoRepository.GetById(dto.PlanoId);
+            if (null == plano)
+                throw new BusinessRuleException("Plano não existente ou não encontrado.");
+
+            var cartao = usuario.Cartoes.Where(x => x.Ativo).FirstOrDefault();
+            if (null == cartao)
+                throw new BusinessRuleException("Usuário não possui cartão ativo.");
+
+            usuario.AtualizarAssinatura(plano, cartao);
+
+            this.UsuarioRepository.Save(usuario);
+            var result = this.Mapper.Map<UsuarioDto>(usuario);
+
+            return result;
+        }
         public UsuarioDto GetUserById(Guid id)
         {
             var usuario = this.UsuarioRepository.GetById(id);

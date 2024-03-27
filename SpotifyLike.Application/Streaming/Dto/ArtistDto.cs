@@ -16,5 +16,6 @@ namespace SpotifyLike.Application.Streaming.Dto
 
         [Required]
         public string Descricao { get; set; }
+        public string Backdrop { get; set; }
     }
 }

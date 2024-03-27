@@ -21,12 +21,19 @@ namespace SpotifyLike.Api.Controllers
         [HttpGet("{idAlbum}")]
         public IActionResult GetAlbumById(Guid idAlbum)
         {
-            var result = this._albumService.GetAlbumById(idAlbum);
-            if (result == null)
+            try
             {
-                return NotFound();
+                var result = this._albumService.GetAlbumById(idAlbum);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
             }
-            return Ok(result);
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         /// <summary>
@@ -40,6 +47,25 @@ namespace SpotifyLike.Api.Controllers
             try
             {
                 var result = this._albumService.CreateAlbum(dto);
+                return Created($"/albums/{result.Id}", result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Adiciona novas músicas a um álbum existente.
+        /// </summary>
+        [HttpPost("Songs")]
+        public IActionResult AddSongs([FromBody] AlbumDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+            try
+            {
+                var result = this._albumService.AddSongsToAlbum(dto.Id, dto.Musicas);
                 return Created($"/albums/{result.Id}", result);
             }
             catch (BusinessRuleException ex)

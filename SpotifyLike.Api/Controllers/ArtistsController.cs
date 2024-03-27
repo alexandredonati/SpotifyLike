@@ -64,10 +64,31 @@ namespace SpotifyLike.Api.Controllers
         /// <summary>
         /// Obtém uma coleção com todos os albums de um artista.
         /// </summary>
-        [HttpGet("{idArtist}/albums")]
+        [HttpGet("{idArtist}/Albums")]
         public IActionResult GetArtistAlbums(Guid idArtist) 
         {
-            var result = this._artistService.GetArtistAlbums(idArtist);
+            try
+            {
+                var result = this._artistService.GetArtistAlbums(idArtist);
+
+                if (result == null)
+                    return NotFound();
+
+                return Ok(result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Obtém uma coleção com todas as músicas de um artista.
+        /// </summary>
+        [HttpGet("{idArtist}/Songs")]
+        public IActionResult GetArtistSongs(Guid idArtist)
+        {
+            var result = this._artistService.GetArtistSongs(idArtist);
 
             if (result == null)
                 return NotFound();

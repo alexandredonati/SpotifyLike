@@ -44,9 +44,9 @@ namespace SpotifyLike.Application.Conta
 
         }
 
-        public UsuarioDto UpdateSubscription(UsuarioDto dto)
+        public UsuarioDto UpdateSubscription(SubscriptionDto dto)
         {
-            var usuario = this.UsuarioRepository.GetById(dto.Id);
+            var usuario = this.UsuarioRepository.GetById(dto.UserId);
             if (null == usuario)
                 throw new BusinessRuleException("Usuário não encontrado.");
 
@@ -54,13 +54,18 @@ namespace SpotifyLike.Application.Conta
             if (null == plano)
                 throw new BusinessRuleException("Plano não existente ou não encontrado.");
 
+            if (usuario.Assinaturas.FirstOrDefault(a => a.Ativo)?.Plano.Id == plano.Id)
+            {
+                throw new BusinessRuleException("A assinatura atual do usuário já contempla o plano selecionado.");
+            }
+
             var cartao = usuario.Cartoes.Where(x => x.Ativo).FirstOrDefault();
             if (null == cartao)
                 throw new BusinessRuleException("Usuário não possui cartão ativo.");
 
             usuario.AtualizarAssinatura(plano, cartao);
 
-            this.UsuarioRepository.Save(usuario);
+            this.UsuarioRepository.Update(usuario);
             var result = this.Mapper.Map<UsuarioDto>(usuario);
 
             return result;

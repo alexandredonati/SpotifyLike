@@ -15,7 +15,6 @@ namespace SpotifyLike.Repository.Repository
         {
             Context = context;
         }
-    }
 
     //public Usuario GetById(Guid id)
     //{
@@ -26,4 +25,5 @@ namespace SpotifyLike.Repository.Repository
     //               //.AsSplitQuery() //Quebra a consulta por cada tipo
     //               .FirstOrDefault(x => x.Id == id);
     //}
+    }
 }

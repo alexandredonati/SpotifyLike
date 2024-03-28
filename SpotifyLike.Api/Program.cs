@@ -17,7 +17,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<SpotifyLikeContext>(c =>
 {
-    c.UseLazyLoadingProxies()
+    c
+    .UseLazyLoadingProxies()
     .UseSqlServer(builder.Configuration.GetConnectionString("SpotifyConnection"));
 });
 

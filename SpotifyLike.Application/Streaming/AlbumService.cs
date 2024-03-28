@@ -89,7 +89,7 @@ namespace SpotifyLike.Application.Streaming
             {
                 album.AdicionarMusica(new Musica
                 {
-                    Titulo = item.Nome,
+                    Titulo = item.Titulo,
                     Duracao = new SpotifyLike.Domain.Streaming.ValueObject.Duracao(item.Duracao)
                 });
             }
@@ -110,7 +110,7 @@ namespace SpotifyLike.Application.Streaming
                 {
                     Id = item.Id,
                     Duracao = item.Duracao,
-                    Nome = item.Titulo
+                    Titulo = item.Titulo
                 };
 
                 dto.Musicas.Add(MusicDto);

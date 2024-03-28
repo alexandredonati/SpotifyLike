@@ -38,7 +38,7 @@ namespace SpotifyLike.Api.Controllers
         /// Atualiza a assinatura de um usuário existente
         /// </summary>
         [HttpPost("Subscriptions")]
-        public IActionResult UpdateSubscription([FromBody] UsuarioDto dto)
+        public IActionResult UpdateSubscription([FromBody] SubscriptionDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();

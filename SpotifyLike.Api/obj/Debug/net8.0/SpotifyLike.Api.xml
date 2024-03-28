@@ -49,7 +49,7 @@
             Adiciona um novo usuário
             </summary>
         </member>
-        <member name="M:SpotifyLike.Api.Controllers.UsersController.UpdateSubscription(SpotifyLike.Application.Conta.Dto.UsuarioDto)">
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.UpdateSubscription(SpotifyLike.Application.Conta.Dto.SubscriptionDto)">
             <summary>
             Atualiza a assinatura de um usuário existente
             </summary>

@@ -24,6 +24,7 @@ namespace SpotifyLike.Repository.Repository
 
         public void Update(T entity) 
         {
+            this.Context.Attach(entity);
             this.Context.Update(entity);
             this.Context.SaveChanges();
         }

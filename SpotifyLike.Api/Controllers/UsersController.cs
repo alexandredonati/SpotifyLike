@@ -59,13 +59,13 @@ namespace SpotifyLike.Api.Controllers
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-            var result = this._usuarioService.GetUsers();
+            //var result = this._usuarioService.GetUsers();
+            this._usuarioService.TestMethod();
+            //if (result == null)
+            //    return NotFound();
 
-            if (result == null)
-                return NotFound();
-
-            return Ok(result);
-
+            //return Ok(result);
+            return Ok();
         }
 
         /// <summary>

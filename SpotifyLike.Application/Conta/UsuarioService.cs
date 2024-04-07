@@ -13,13 +13,15 @@ namespace SpotifyLike.Application.Conta
         private IMapper Mapper { get; set; }
         private UsuarioRepository UsuarioRepository { get; set; }
         private PlanoRepository PlanoRepository { get; set; }
+        private TransacaoRepository TransacaoRepository { get; set; }
 
 
-        public UsuarioService(IMapper mapper, UsuarioRepository usuarioRepository, PlanoRepository planoRepository)
+        public UsuarioService(IMapper mapper, UsuarioRepository usuarioRepository, PlanoRepository planoRepository, TransacaoRepository transacaoRepository)
         {
             Mapper = mapper;
             UsuarioRepository = usuarioRepository;
             PlanoRepository = planoRepository;
+            TransacaoRepository = transacaoRepository;
         }
 
         public UsuarioDto Create(UsuarioDto dto)
@@ -65,6 +67,10 @@ namespace SpotifyLike.Application.Conta
 
             usuario.AtualizarAssinatura(plano, cartao);
 
+            //var novaTransacao = usuario.Cartoes.FirstOrDefault(x => x.Ativo).Transacoes.Last();
+
+            //this.TransacaoRepository.Save(novaTransacao);
+
             this.UsuarioRepository.Update(usuario);
             var result = this.Mapper.Map<UsuarioDto>(usuario);
 
@@ -82,5 +88,37 @@ namespace SpotifyLike.Application.Conta
             var result = this.Mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
             return result;
         }
+        public void TestMethod()
+        {
+            var novoCartao = new Cartao
+            {
+                Ativo = true,
+                Numero = "123",
+                DataVencimento = DateTime.Now,
+                Limite = new Domain.Core.ValueObject.Monetario { Valor = 123 },
+                Transacoes = new List<Transacao>()
+            };
+            var novaTransacao = new Transacao
+            {
+                Descricao = "teste",
+                DataTransacao = DateTime.Now,
+                Autorizada = true,
+                Recebedor = new Domain.Transacao.ValueObject.Merchant { Nome = "zé" },
+                Valor = new Domain.Core.ValueObject.Monetario { Valor = 123 },
+                CartaoOrigem = novoCartao
+            };
+            var novoUsuario = new Usuario
+            {
+                Nome = "",
+                Email = "",
+                DataNascimento = DateTime.Today,
+                Senha = new Domain.Core.ValueObject.Senha { HexValue = "" },
+                Cartoes = new List<Cartao>() { novoCartao }
+            };
+
+            this.TransacaoRepository.Save(novaTransacao);
+            //this.UsuarioRepository.Save(novoUsuario);
+        }
+
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpotifyLike.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75817e40d4f929447fe5c7f9449a642a527c6afb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8792acf9c29f6e1a2c97dfec5d908de7d854caab")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpotifyLike.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpotifyLike.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -29,7 +29,7 @@ builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddScoped<PlanoRepository>();
 builder.Services.AddScoped<ArtistRepository>();
 builder.Services.AddScoped<AlbumRepository>();
-
+builder.Services.AddScoped<TransacaoRepository>();
 //Services
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<ArtistService>();

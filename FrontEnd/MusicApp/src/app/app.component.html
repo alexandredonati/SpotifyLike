@@ -1,12 +1,18 @@
 <p>
   <mat-toolbar color="primary">
-    <span> Spotify Lite</span>
+    <button mat-icon-button class="menu-icon" aria-label="menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button class="favorite-icon" aria-label="heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="share-icon" aria-label="share icon">
+      <mat-icon>share</mat-icon>
+    </button>
   </mat-toolbar>
-<p>
+</p>
 <div>
-  <mat-grid-list cols="1" rowHeight="200px">
-    <mat-grid-tile>
-      <router-outlet></router-outlet>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <router-outlet></router-outlet>
 </div>

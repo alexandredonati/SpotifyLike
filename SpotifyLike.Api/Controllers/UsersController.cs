@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity.Data;
+using Microsoft.AspNetCore.Mvc;
 using SpotifyLike.Application.Conta;
 using SpotifyLike.Application.Conta.Dto;
 using SpotifyLike.Domain;
@@ -82,5 +83,24 @@ namespace SpotifyLike.Api.Controllers
             return Ok(result);
 
         }
+
+        /// <summary>
+        /// Autentica um usuário a partir de e-mail e senha.
+        /// </summary>
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] Request.LoginRequest dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+            try
+            {
+                var result = this._usuarioService.Authenticate(dto.Email, dto.Senha);
+                return Ok(result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }   
     }
 }

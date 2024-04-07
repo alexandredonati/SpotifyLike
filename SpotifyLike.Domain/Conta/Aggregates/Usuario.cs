@@ -2,12 +2,6 @@
 using SpotifyLike.Domain.Streaming.Aggregates;
 using SpotifyLike.Domain.Transacao.Aggregates;
 using SpotifyLike.Domain.Transacao.ValueObject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpotifyLike.Domain.Conta.Aggregates
 {
@@ -32,7 +26,7 @@ namespace SpotifyLike.Domain.Conta.Aggregates
             this.Email = email;
             this.DataNascimento = dataNascimento;
 
-            this.Senha = new Core.ValueObject.Senha(senha);
+            this.Senha = new Senha(senha);
 
             this.AdicionarCartao(cartao);
 

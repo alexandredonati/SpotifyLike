@@ -2,6 +2,7 @@
 using SpotifyLike.Application.Conta.Dto;
 using SpotifyLike.Domain;
 using SpotifyLike.Domain.Conta.Aggregates;
+using SpotifyLike.Domain.Core.ValueObject;
 using SpotifyLike.Domain.Streaming.Aggregates;
 using SpotifyLike.Domain.Transacao.Aggregates;
 using SpotifyLike.Repository.Repository;
@@ -37,7 +38,7 @@ namespace SpotifyLike.Application.Conta
             Cartao cartao = this.Mapper.Map<Cartao>(dto.Cartao);
 
             Usuario usuario = new Usuario();
-            usuario.CriarConta(dto.Nome, dto.Email, dto.Senha.HexValue, dto.DataNascimento, cartao, plano);
+            usuario.CriarConta(dto.Nome, dto.Email, dto.Senha, dto.DataNascimento, cartao, plano);
 
             this.UsuarioRepository.Save(usuario);
             var result = this.Mapper.Map<UsuarioDto>(usuario);
@@ -118,6 +119,17 @@ namespace SpotifyLike.Application.Conta
 
             this.TransacaoRepository.Save(novaTransacao);
             //this.UsuarioRepository.Save(novoUsuario);
+        }
+
+        public UsuarioDto Authenticate(string email, string senha)
+        {
+            var senhaHex = new Senha(senha);
+            var user = this.UsuarioRepository.Find(x => x.Email == email && x.Senha.HexValue == senhaHex.HexValue).FirstOrDefault();
+            if (user == null)
+                throw new BusinessRuleException("Usuário e/ou senha inválido(s).");
+
+            var result = this.Mapper.Map<UsuarioDto>(user);
+            return result;        
         }
 
     }

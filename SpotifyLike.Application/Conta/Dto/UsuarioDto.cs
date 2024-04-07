@@ -24,7 +24,7 @@ namespace SpotifyLike.Application.Conta.Dto
         public DateTime DataNascimento { get; set; }
 
         [Required]
-        public Senha Senha { get; set; }
+        public string Senha { get; set; }
         public Guid PlanoId { get; set; }
 
         [Required]

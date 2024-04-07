@@ -64,5 +64,10 @@
             Obtém um usuário pelo seu ID.
             </summary>
         </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.Login(SpotifyLike.Api.Controllers.Request.LoginRequest)">
+            <summary>
+            Autentica um usuário a partir de e-mail e senha.
+            </summary>
+        </member>
     </members>
 </doc>

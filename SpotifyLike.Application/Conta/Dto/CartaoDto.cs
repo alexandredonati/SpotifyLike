@@ -8,7 +8,7 @@ namespace SpotifyLike.Application.Conta.Dto
 {
     public class CartaoDto
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public Boolean Ativo { get; set; }
         public Decimal Limite { get; set; }
         public string Numero { get; set; }

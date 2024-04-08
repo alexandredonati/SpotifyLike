@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatCalendarCellClassFunction, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,7 +20,7 @@ import { Plano } from '../model/plano';
   selector: 'app-register',
   standalone: true,
   imports: [CommonModule, MatFormFieldModule, MatInputModule, MatSelectModule, 
-    FormsModule, ReactiveFormsModule, MatButtonModule, MatDatepickerModule,MatExpansionModule],
+    FormsModule, ReactiveFormsModule, MatButtonModule, MatDatepickerModule,MatExpansionModule, MatDialogModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
   providers: [provideNativeDateAdapter()]
@@ -54,7 +55,7 @@ export class RegisterComponent implements OnInit{
 
   errorMessage = '';
 
-  constructor(private userService: UserService, private planoSevice: PlanoService, private router: Router) { }
+  constructor(private userService: UserService, private planoSevice: PlanoService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.planoSevice.getPlanos().subscribe(
@@ -91,7 +92,7 @@ export class RegisterComponent implements OnInit{
       {
         next: (response) => {
           this.errorMessage = '';
-          this.router.navigate(['']);},
+          this.openDialog();},
         error: (e) => {
           if(e.error) {
             this.errorMessage = e.error;
@@ -111,5 +112,24 @@ export class RegisterComponent implements OnInit{
           this.errorMessage = e.error;
         }
       });
+  }
+
+  openDialog() {
+    this.dialog.open(DialogSuccess);
+  }
+}
+
+@Component({
+  selector: 'app-register-success-dialog',
+  templateUrl: './register-success-dialog.html',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+})
+export class DialogSuccess {
+
+  constructor(private router: Router) { }
+
+  public goToLogin() {
+    this.router.navigate([""]);
   }
 }

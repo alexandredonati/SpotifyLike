@@ -1,7 +1,7 @@
 <p>
   <mat-toolbar color="primary">
 
-    <a on (click)="goToHome()">{{title}}</a>
+    <a (click)="goToHome()">{{title}}</a>
     <span class="spacer"></span>
     <button mat-icon-button [disabled]="blockAccess()" (click)="goToHome()">
       <mat-icon>home</mat-icon>

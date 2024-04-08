@@ -49,6 +49,8 @@ export class LoginComponent {
         }
     });
   } 
-}
 
-export class DialogElements {}
+  public goToRegister() {
+    this.router.navigate(["register"]);
+  }
+}

@@ -1,0 +1,94 @@
+<div class="login-container" style="margin-left: 15px;">
+    <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+    
+    <br />
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+        <input matInput
+               placeholder="Digite seu nome"
+               [formControl]="nome"
+               (keyup.enter)="newUser()"
+               required>
+  
+        <mat-error *ngIf="email.invalid">Nome inválido</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input matInput
+             placeholder="john@example.com"
+             [formControl]="email"
+             (keyup.enter)="newUser()"
+             required>
+      <mat-error *ngIf="email.invalid">E-mail inválido</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+        <mat-label>Senha</mat-label>
+        <input matInput
+               type="password"
+               placeholder="Digite sua senha"
+               [formControl]="senha"
+               (keyup.enter)="newUser()"
+               required>
+        <mat-error *ngIf="email.invalid">Senha inválida</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dataNascimento">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>    
+      <br /> 
+      <mat-form-field>
+        <mat-label>Plano</mat-label>
+        <mat-select [(ngModel)]="selectedPlanoId">
+          @for (plano of planos; track plano) {
+            <mat-option [value]="plano.id">{{plano.tipo}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-accordion>
+        <mat-expansion-panel style="width: 400px;">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cartão
+            </mat-panel-title>
+            <mat-panel-description>
+              Preencha os dados do cartão
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <mat-label>Número</mat-label>
+              <input matInput
+                     placeholder="Digite o # do cartão"
+                     [formControl]="cartaoNumero"
+                     (keyup.enter)="newUser()"
+                     required>
+              <mat-error *ngIf="email.invalid">Número do cartão inválido</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Limite</mat-label>
+              <input matInput
+                     placeholder="Informe o limite do cartão"
+                     [formControl]="cartaoLimite"
+                     (keyup.enter)="newUser()"
+                     required>
+              <mat-error *ngIf="email.invalid">Limite do cartão inválido</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Data de Vencimento</mat-label>
+            <input matInput [matDatepicker]="picker2" [(ngModel)]="cartaoVencimento">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>    
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+      <br />
+      <button mat-raised-button color="primary" (click)="newUser()">Register</button>
+</div>

@@ -19,13 +19,13 @@ namespace SpotifyLike.Repository.Repository
         public void Save(T entity)
         {
             this.Context.Add(entity);
-            this.Context.SaveChangesAsync();
+            this.Context.SaveChanges();
         }
 
-        public async void Update(T entity) 
+        public void Update(T entity) 
         {
             this.Context.Update(entity);
-            await this.Context.SaveChangesAsync();
+            this.Context.SaveChanges();
         }
 
         public void Delete(T entity)

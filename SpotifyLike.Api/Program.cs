@@ -34,6 +34,7 @@ builder.Services.AddScoped<TransacaoRepository>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<ArtistService>();
 builder.Services.AddScoped<AlbumService>();
+builder.Services.AddScoped<PlanosService>();
 
 builder.Services.AddSwaggerGen(c =>
 {

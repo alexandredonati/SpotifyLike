@@ -1,13 +1,10 @@
 <p>
   <mat-toolbar color="primary">
 
-    <span>{{title}}</span>
+    <a on (click)="goToHome()">{{title}}</a>
     <span class="spacer"></span>
-    <button mat-icon-button class="favorite-icon" aria-label="heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="share-icon" aria-label="share icon">
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button [disabled]="blockAccess()" (click)="goToHome()">
+      <mat-icon>home</mat-icon>
     </button>
   </mat-toolbar>
 </p>

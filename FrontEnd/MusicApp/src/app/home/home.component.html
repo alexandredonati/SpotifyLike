@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" *ngIf="!blockAccess()">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <div fxFlex="50%"
            fxFlex.xs="100%"
@@ -21,4 +21,10 @@
         </mat-card>
       </div>
     </div>
-  </div>
+</div>
+
+<div *ngIf="blockAccess()">
+  <h1>ACESSO NEGADO</h1>
+  <h2>Você precisa se autenticar para acessar a aplicação</h2>
+  <button mat-raised-button color="primary" (click)="goToLogin()">Log in</button>
+</div>

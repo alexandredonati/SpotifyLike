@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     {
+        // define this as the landing page
         path: '',
         component: LoginComponent
     },

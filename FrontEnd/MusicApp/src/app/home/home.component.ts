@@ -28,7 +28,16 @@ export class HomeComponent implements OnInit{
       })
     }
 
+    public blockAccess(): boolean {
+      return sessionStorage.getItem('user') === null;
+    }
+
+
     public goToDetails(item:Artist) {
       this.router.navigate(["detail", item.id]);
+    }
+
+    public goToLogin() {
+      this.router.navigate([""]);
     }
 }

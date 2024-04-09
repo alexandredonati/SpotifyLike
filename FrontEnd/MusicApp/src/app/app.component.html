@@ -1,13 +1,24 @@
-<p>
-  <mat-toolbar color="primary">
+<mat-toolbar color="primary">
+  <button mat-icon-button [disabled]="!checkUserAuthenticated()" (click)="drawer.toggle()">
+    <mat-icon fontIcon="">menu</mat-icon>
+  </button>
+  <a (click)="goToHome()">{{title}}</a>
+</mat-toolbar>
 
-    <a (click)="goToHome()">{{title}}</a>
-    <span class="spacer"></span>
-    <button mat-icon-button [disabled]="blockAccess()" (click)="goToHome()">
-      <mat-icon>home</mat-icon>
+<mat-drawer-container class="drawer-container">
+  <mat-drawer #drawer class="drawer-sidenav" mode="side" >
+    <br />
+    <button (click)="goToHome()" mat-raised-button class="drawer-button">
+      Home
     </button>
-  </mat-toolbar>
-</p>
-<div>
-  <router-outlet></router-outlet>
-</div>
+    <button (click)="goToExplore()" mat-raised-button class="drawer-button">
+      Explorar Artistas
+    </button>
+    <button (click)="goToExploreSongs()" mat-raised-button class="drawer-button">
+      Explorar Musicas
+    </button>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

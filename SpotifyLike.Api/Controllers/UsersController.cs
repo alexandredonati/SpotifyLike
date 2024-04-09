@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using SpotifyLike.Application.Conta;
 using SpotifyLike.Application.Conta.Dto;
@@ -85,6 +86,51 @@ namespace SpotifyLike.Api.Controllers
         }
 
         /// <summary>
+        /// Obtém as musicas favoritas de um usuário pelo seu ID.
+        /// </summary>
+        [HttpGet("{idUser}/Favoritas")]
+        public IActionResult GetUserFavoriteSongs(Guid idUser)
+        {
+            try
+            {
+                var result = this._usuarioService.GetFavoritas(idUser);
+
+                if (result == null)
+                    return NotFound();
+
+                return Ok(result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Obtém as playlistsum usuário pelo seu ID.
+        /// </summary>
+        [HttpGet("{idUser}/Playlists")]
+        public IActionResult GetUserPlaylists(Guid idUser)
+        {
+            try
+            {
+                var result = this._usuarioService.GetPlaylists(idUser);
+
+                if (result == null)
+                    return NotFound();
+
+                return Ok(result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+
+        /// <summary>
         /// Autentica um usuário a partir de e-mail e senha.
         /// </summary>
         [HttpPost("Login")]
@@ -101,6 +147,25 @@ namespace SpotifyLike.Api.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        }   
+        }
+
+        /// <summary>
+        /// Autentica um usuário a partir de e-mail e senha.
+        /// </summary>
+        [HttpPost("Favoritar")]
+        public IActionResult FavoritarMusica([FromBody] FavoritarDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+            try
+            {
+                var result = this._usuarioService.FavoritarMusica(dto.idUser, dto.idSong);
+                return Ok(result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

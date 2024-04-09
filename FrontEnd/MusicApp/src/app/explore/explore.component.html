@@ -1,0 +1,45 @@
+<div class="content" *ngIf="!blockAccess()">
+    <div class="search-container">
+      <p *ngIf="errorMessage">{{errorMessage}}</p>
+      <mat-form-field>
+        <mat-label>Pesquisar artista</mat-label>
+        <input matInput
+               [formControl]="searchArtistsText"
+               (keyup.enter)="searchArtists()"
+        />
+      </mat-form-field>
+      <button mat-raised-button color="accent" style="margin-bottom: 20px; margin-left: 15px;" (click)="searchArtists()">Pesquisar</button>
+      <button mat-raised-button color="primary" style="margin-bottom: 20px; margin-left: 15px;" (click)="getAllArtists()">Exibir todos</button>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="50%"
+           fxFlex.xs="100%"
+           fxFlex.sm="33%" *ngFor="let item of artists">
+        <mat-card>
+          <div style="text-align: center;">
+            <mat-card-title>{{item.nome}}</mat-card-title>
+          </div>
+          <br />
+          <img
+            mat-card-image
+            [src]="item.backdrop"
+            style="max-height: 300px; width: auto; object-fit:contain;"
+          />
+          <br />
+          <mat-card-content>
+            <p>{{item.descricao}}</p>
+          </mat-card-content>
+          <br />
+          <div style="text-align: center;">
+            <button mat-button (click)="goToDetails(item)">VER DETALHES</button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+</div>
+
+<div *ngIf="blockAccess()">
+  <h1>ACESSO NEGADO</h1>
+  <h2>Você precisa se autenticar para acessar a aplicação</h2>
+  <button mat-raised-button color="primary" (click)="goToLogin()">Log in</button>
+</div>

@@ -56,7 +56,7 @@ namespace SpotifyLike.Domain.Conta.Aggregates
         public void AtualizarAssinatura(Plano plano, Cartao cartao)
         {
             //Debitar o valor do plano no cartao
-            cartao.RealizarTransacao(new Merchant() { Nome = plano.Tipo }, new Monetario(plano.Valor), plano.Descricao);
+            //cartao.RealizarTransacao(new Merchant() { Nome = plano.Tipo }, new Monetario(plano.Valor), plano.Descricao);
 
             //Desativo caso tenha alguma assinatura ativa
             DesativarAssinaturaAtiva();

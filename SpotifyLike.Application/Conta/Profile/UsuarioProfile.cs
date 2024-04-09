@@ -38,6 +38,7 @@ namespace SpotifyLike.Application.Conta.Profile
                         cartaoDto.Id = "**********";
                         cartaoDto.Ativo = true;
                         cartaoDto.Numero = "**** **** **** " + activeCard.Numero.Substring(activeCard.Numero.Length - 4);
+                        cartaoDto.DataVencimento = activeCard.DataVencimento;
                     }
 
                     else

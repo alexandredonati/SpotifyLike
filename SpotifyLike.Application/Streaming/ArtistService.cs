@@ -64,5 +64,14 @@ namespace SpotifyLike.Application.Streaming
 
             return result;
         }
+
+        public IEnumerable<ArtistDto> SearchArtists(string searchText)
+        {
+            var artistas = this.ArtistRepository
+                            .GetAll()
+                            .Where(a => a.Nome.ToLower().Contains(searchText.ToLower()));
+
+            return this.Mapper.Map<IEnumerable<ArtistDto>>(artistas);
+        }
     }
 }

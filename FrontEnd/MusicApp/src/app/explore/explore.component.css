@@ -1,0 +1,13 @@
+.artist-card {
+    max-width: 400px;
+  }
+  
+  .artist-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+.search-container {
+    justify-content: center;
+    margin-left: 20px;
+    margin-top: 20px;
+}

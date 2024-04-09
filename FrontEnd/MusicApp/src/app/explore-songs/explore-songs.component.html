@@ -1,0 +1,31 @@
+<div class="content" *ngIf="!blockAccess()">
+    <div class="search-container">
+      <p *ngIf="errorMessage">{{errorMessage}}</p>
+      <mat-form-field>
+        <mat-label>Pesquisar artista</mat-label>
+        <input matInput
+               [formControl]="searchSongsText"
+               (keyup.enter)="searchSongs()"
+        />
+      </mat-form-field>
+      <button mat-raised-button color="accent" style="margin-bottom: 20px; margin-left: 15px;" (click)="searchSongs()">Pesquisar</button>
+      <button mat-raised-button color="primary" style="margin-bottom: 20px; margin-left: 15px;" (click)="getAllSongs()">Exibir todos</button>
+    </div>
+
+    <mat-card *ngFor="let item of songs" style="margin-bottom: 10px;">
+        <mat-card-header>
+          <mat-card-title>{{item.titulo}}</mat-card-title>
+          <mat-card-subtitle>Duração: {{item.duracao.valor}} s</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="end">
+          <button mat-button>
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </mat-card-actions>
+    </mat-card>
+
+<div *ngIf="blockAccess()">
+  <h1>ACESSO NEGADO</h1>
+  <h2>Você precisa se autenticar para acessar a aplicação</h2>
+  <button mat-raised-button color="primary" (click)="goToLogin()">Log in</button>
+</div>

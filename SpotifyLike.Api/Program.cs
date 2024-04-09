@@ -30,11 +30,13 @@ builder.Services.AddScoped<PlanoRepository>();
 builder.Services.AddScoped<ArtistRepository>();
 builder.Services.AddScoped<AlbumRepository>();
 builder.Services.AddScoped<TransacaoRepository>();
+builder.Services.AddScoped<SongRepository>();
 //Services
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<ArtistService>();
 builder.Services.AddScoped<AlbumService>();
 builder.Services.AddScoped<PlanosService>();
+builder.Services.AddScoped<SongService>();
 
 builder.Services.AddSwaggerGen(c =>
 {

@@ -7,7 +7,12 @@ namespace SpotifyLike.Application.Streaming.Profile
     {
         public MusicProfile() 
         {
-            CreateMap<MusicDto, Musica>()
+            CreateMap<Musica, MusicDto>()
+                .AfterMap((s, d) =>
+                {
+                    d.AlbumId = s.Album.Id;
+                    d.ArtistsIds = s.Artistas.Select(a => a.Id).ToList();
+                })
                 .ReverseMap();
         }
     }

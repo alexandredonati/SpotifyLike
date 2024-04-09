@@ -13,9 +13,13 @@ export class ArtistService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getArtist(): Observable<Artist[]> {
+  public getAllArtists(): Observable<Artist[]> {
       return this.httpClient.get<Artist[]>(this.url);
   }
+
+  public searchArtists(searchText: string): Observable<Artist[]> {
+    return this.httpClient.get<Artist[]>(`${this.url}/Search/${searchText}`);
+}
 
   public getArtistById(id: string): Observable<Artist> {
     return this.httpClient.get<Artist>(`${this.url}/${id}`)

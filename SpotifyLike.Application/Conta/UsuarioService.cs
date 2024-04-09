@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SpotifyLike.Application.Conta.Dto;
+using SpotifyLike.Application.Streaming.Dto;
 using SpotifyLike.Domain;
 using SpotifyLike.Domain.Conta.Aggregates;
 using SpotifyLike.Domain.Core.ValueObject;
@@ -15,14 +16,16 @@ namespace SpotifyLike.Application.Conta
         private UsuarioRepository UsuarioRepository { get; set; }
         private PlanoRepository PlanoRepository { get; set; }
         private TransacaoRepository TransacaoRepository { get; set; }
+        private SongRepository SongRepository { get; set; }
 
 
-        public UsuarioService(IMapper mapper, UsuarioRepository usuarioRepository, PlanoRepository planoRepository, TransacaoRepository transacaoRepository)
+        public UsuarioService(IMapper mapper, UsuarioRepository usuarioRepository, PlanoRepository planoRepository, TransacaoRepository transacaoRepository, SongRepository songRepository)
         {
             Mapper = mapper;
             UsuarioRepository = usuarioRepository;
             PlanoRepository = planoRepository;
             TransacaoRepository = transacaoRepository;
+            SongRepository = songRepository;
         }
 
         public UsuarioDto Create(UsuarioDto dto)
@@ -89,6 +92,28 @@ namespace SpotifyLike.Application.Conta
             var result = this.Mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
             return result;
         }
+
+        public IEnumerable<MusicDto> GetFavoritas(Guid id)
+        {
+            var usuario = this.UsuarioRepository.GetById(id);
+            if (usuario == null)
+                throw new BusinessRuleException("Usuário não encontrado.");
+
+            var playlistFavoritas = usuario.Playlists.FirstOrDefault(x => x.Id == usuario.FavoritePlaylistId);
+
+            return this.Mapper.Map<IEnumerable<MusicDto>>(playlistFavoritas?.Musicas);
+        }
+
+        public IEnumerable<PlaylistDto> GetPlaylists(Guid id)
+        {
+            var usuario = this.UsuarioRepository.GetById(id);
+            if (usuario == null)
+                throw new BusinessRuleException("Usuário não encontrado.");
+
+            var playlists = usuario.Playlists.Where(x => x.Id != usuario.FavoritePlaylistId);
+            return this.Mapper.Map<IEnumerable<PlaylistDto>>(playlists);
+        }
+
         public void TestMethod()
         {
             var novoCartao = new Cartao
@@ -130,6 +155,22 @@ namespace SpotifyLike.Application.Conta
 
             var result = this.Mapper.Map<UsuarioDto>(user);
             return result;        
+        }
+
+        public UsuarioDto FavoritarMusica(Guid idUser, Guid idSong)
+        {
+            var usuario = this.UsuarioRepository.GetById(idUser);
+            if (usuario == null)
+                throw new BusinessRuleException("Usuário não encontrado.");
+
+            var musica = this.SongRepository.GetById(idSong);
+            if (musica == null)
+                throw new BusinessRuleException("Música não encontrada.");
+
+            usuario.FavoritarMusica(musica);
+
+            this.UsuarioRepository.Update(usuario);
+            return this.Mapper.Map<UsuarioDto>(usuario);
         }
 
     }

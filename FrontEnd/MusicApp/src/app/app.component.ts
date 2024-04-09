@@ -4,13 +4,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { Artist } from './model/artist';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, MatGridListModule],
+  imports: [RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, MatGridListModule, MatSidenavModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -20,18 +21,25 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   public goToHome(){
-    if(!this.blockAccess()){
+    if(this.checkUserAuthenticated()){
     this.router.navigate(['/home']);
     }
-  } 
-
-  public blockAccess(): boolean {
-    return sessionStorage.getItem('user') === null;
   }
 
+  public goToExplore(){
+    if(this.checkUserAuthenticated()){
+    this.router.navigate(['/explore']);
+    }
+  }
 
-  public goToDetails(item:Artist) {
-    this.router.navigate(["detail", item.id]);
+  public goToExploreSongs(){
+    if(this.checkUserAuthenticated()){
+    this.router.navigate(['/explore-songs']);
+    }
+  }
+
+  public checkUserAuthenticated(): boolean {
+    return !(sessionStorage.getItem('user') === null);
   }
 
   public goToLogin() {

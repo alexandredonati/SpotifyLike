@@ -20,7 +20,7 @@ import { User } from '../model/user';
   styleUrl: './explore-songs.component.css'
 })
 export class ExploreSongsComponent implements OnInit {
-
+  
   user = JSON.parse(sessionStorage.getItem('user') as string) as User;
 
   public errorMessage = '';  

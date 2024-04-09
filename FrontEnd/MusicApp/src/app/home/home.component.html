@@ -14,6 +14,7 @@
           <p>Nome: {{user.nome}}</p>
           <p>E-mail: {{user.email}}</p>
           <p>Data de Nascimento: {{strDataNascimento}}</p>
+          <p *ngIf="planoSelecionado">Plano: {{planoSelecionado.tipo}} - R$ {{planoSelecionado.valor}}</p>
       </mat-expansion-panel>
     </mat-accordion>
     <br />

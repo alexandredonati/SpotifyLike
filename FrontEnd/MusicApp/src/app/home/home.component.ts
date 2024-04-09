@@ -11,6 +11,8 @@ import { User } from '../model/user';
 import { UserService } from '../services/user.service';
 import { Song } from '../model/song';
 import { Playlist } from '../model/playlist';
+import { Plano } from '../model/plano';
+import { PlanoService } from '../services/plano.service';
 
 @Component({
   selector: 'app-home',
@@ -28,15 +30,19 @@ export class HomeComponent implements OnInit{
 
     playlists: Playlist[] = [];
 
+    planos:Plano[] = [];
+    planoSelecionado!: Plano;
+
     dataNascimento = new Date(this.user.dataNascimento);
     strDataNascimento = this.dataNascimento.getDate() + '/' + (this.dataNascimento.getMonth() + 1) + '/' + this.dataNascimento.getFullYear();
 
-    constructor(private artistService: ArtistService, private userService: UserService, private router: Router){}
+    constructor(private artistService: ArtistService, private userService: UserService, private planoSevice: PlanoService, private router: Router){}
 
     ngOnInit(): void {
 
       this.getFavoritas();
       this.getPlaylists();
+      this.getPlanos();
     };
 
     public blockAccess(): boolean {
@@ -76,6 +82,24 @@ export class HomeComponent implements OnInit{
           }
         }
       );
+    };
+
+    public getPlanos() {
+      this.planoSevice.getPlanos().subscribe(
+        {
+          next: (response) => {
+            this.planos = response;
+            this.planoSelecionado = this.planos.find(p => p.id === this.user.planoId) as Plano;
+          },
+          error: (e) => {
+            console.log(e.error);
+          }
+        });
+    }
+
+    public async getPlanoSelecionado() {
+      await this.getPlanos();
+      this.planoSelecionado = this.planos.find(p => p.id === this.user.planoId) as Plano;
     };
 
     public async unfavoriteSong(idUser: string, idSong: string) {

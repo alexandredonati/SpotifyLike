@@ -27,7 +27,7 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
             {
                 //Diminui o limite com o valor da transacao
                 this.Limite = this.Limite - transacao.Valor;
-                transacao.Notificar();
+                //transacao.Notificar();
             }
 
             return transacao.Autorizada;

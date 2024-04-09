@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule, NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Artist } from '../model/artist';
 import { ArtistService } from '../services/artist.service';
@@ -14,7 +15,7 @@ import { Playlist } from '../model/playlist';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatButtonModule, MatExpansionModule, MatIconModule, CommonModule, NgFor],
+  imports: [MatButtonModule, MatExpansionModule, MatIconModule, CommonModule, NgFor, MatCardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -76,4 +77,25 @@ export class HomeComponent implements OnInit{
         }
       );
     };
+
+    public async unfavoriteSong(idUser: string, idSong: string) {
+      await this.userService.unfavoriteSong(idUser, idSong).subscribe(
+        {
+          next: (response) => {
+            console.log(response);
+          },
+          error: (e) => {
+            console.log(e);
+          }
+        }
+      );
+      
+      await this.delay(500);
+      await this.getFavoritas();
+    };
+    
+    public delay(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
 }

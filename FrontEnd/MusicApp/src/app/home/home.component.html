@@ -25,7 +25,17 @@
             Músicas Favoritas 
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p *ngFor="let song of favoritas">{{song.titulo}} - {{song.duracao.valor}}s</p>
+        <mat-card *ngFor="let song of favoritas" style="margin-bottom: 10px;">
+          <mat-card-header>
+            <mat-card-title>{{song.titulo}}</mat-card-title>
+            <mat-card-subtitle>Duração: {{song.duracao.valor}} s</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions align="end">
+            <button mat-button (click)="unfavoriteSong(user.id, song.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+      </mat-card>
         <p *ngIf="favoritas.length == 0"> Nenhuma música favoritada.</p>
       </mat-expansion-panel>
     </mat-accordion>

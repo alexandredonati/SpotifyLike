@@ -173,5 +173,21 @@ namespace SpotifyLike.Application.Conta
             return this.Mapper.Map<UsuarioDto>(usuario);
         }
 
+        public UsuarioDto DesfavoritarMusica(Guid idUser, Guid idSong)
+        {
+            var usuario = this.UsuarioRepository.GetById(idUser);
+            if (usuario == null)
+                throw new BusinessRuleException("Usuário não encontrado.");
+
+            var musica = this.SongRepository.GetById(idSong);
+            if (musica == null)
+                throw new BusinessRuleException("Música não encontrada.");
+
+            usuario.DesfavoritarMusica(musica);
+
+            this.UsuarioRepository.Update(usuario);
+            return this.Mapper.Map<UsuarioDto>(usuario);
+        }
+
     }
 }

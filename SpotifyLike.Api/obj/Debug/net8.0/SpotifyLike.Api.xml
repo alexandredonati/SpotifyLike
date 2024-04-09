@@ -101,7 +101,12 @@
         </member>
         <member name="M:SpotifyLike.Api.Controllers.UsersController.FavoritarMusica(SpotifyLike.Application.Conta.Dto.FavoritarDto)">
             <summary>
-            Autentica um usuário a partir de e-mail e senha.
+            Adiciona uma nova música aos favoritos do usuário.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.DesfavoritarMusica(SpotifyLike.Application.Conta.Dto.FavoritarDto)">
+            <summary>
+            Remove uma música dos favoritos do usuário.
             </summary>
         </member>
     </members>

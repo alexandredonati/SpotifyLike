@@ -23,7 +23,10 @@ namespace SpotifyLike.Domain.Conta.Aggregates
 
         public void Remover(Musica musica)
         {
-            this.Musicas.Remove(musica);
+            if (this.Musicas.Contains(musica))
+            {
+                this.Musicas.Remove(musica);
+            }
         }
     }
 }

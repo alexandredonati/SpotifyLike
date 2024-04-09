@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SongService } from '../services/song.service';
 import { Song } from '../model/song';
+import { UserService } from '../services/user.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-explore-songs',
@@ -19,13 +21,15 @@ import { Song } from '../model/song';
 })
 export class ExploreSongsComponent implements OnInit {
 
+  user = JSON.parse(sessionStorage.getItem('user') as string) as User;
+
   public errorMessage = '';  
 
   public songs:Song[] = [];
 
   public searchSongsText = new FormControl('');
 
-  constructor(private songService: SongService, private router: Router) { }
+  constructor(private songService: SongService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllSongs();
@@ -61,4 +65,29 @@ export class ExploreSongsComponent implements OnInit {
       }
     )
   }
+
+  public favoriteSong(idUser: string, idSong: string) {
+    this.userService.favoriteSong(idUser, idSong).subscribe(
+      {
+        next: (response) => {
+          console.log(response);
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      })
+  };
+
+  public unfavoriteSong(idUser: string, idSong: string) {
+    this.userService.unfavoriteSong(idUser, idSong).subscribe(
+      {
+        next: (response) => {
+          console.log(response);
+        },
+        error: (e) => {
+          console.log(e);
+        }
+      })
+  };
+
 }

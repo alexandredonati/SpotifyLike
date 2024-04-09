@@ -3,6 +3,10 @@
     <mat-icon fontIcon="">menu</mat-icon>
   </button>
   <a (click)="goToHome()">{{title}}</a>
+  <span style="width: 85%;"></span>
+  <button (click)="logout()" mat-raised-button class="drawer-button" style="margin-top: 15px; width: 100px;">
+    Logout
+  </button>
 </mat-toolbar>
 
 <mat-drawer-container class="drawer-container">

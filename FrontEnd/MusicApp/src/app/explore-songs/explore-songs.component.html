@@ -2,7 +2,7 @@
     <div class="search-container">
       <p *ngIf="errorMessage">{{errorMessage}}</p>
       <mat-form-field>
-        <mat-label>Pesquisar artista</mat-label>
+        <mat-label>Pesquisar música</mat-label>
         <input matInput
                [formControl]="searchSongsText"
                (keyup.enter)="searchSongs()"
@@ -18,7 +18,7 @@
           <mat-card-subtitle>Duração: {{item.duracao.valor}} s</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="end">
-          <button mat-button>
+          <button mat-button (click)="favoriteSong(user.id, item.id)">
             <mat-icon>favorite</mat-icon>
           </button>
         </mat-card-actions>

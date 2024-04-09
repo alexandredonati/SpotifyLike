@@ -42,11 +42,11 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>    
       <br /> 
-      <mat-form-field>
+      <mat-form-field style="width: 250px;">
         <mat-label>Plano</mat-label>
         <mat-select [(ngModel)]="selectedPlanoId">
           @for (plano of planos; track plano) {
-            <mat-option [value]="plano.id">{{plano.tipo}}</mat-option>
+            <mat-option [value]="plano.id">{{plano.tipo}} - R$ {{plano.valor}}</mat-option>
           }
         </mat-select>
       </mat-form-field>

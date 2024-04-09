@@ -42,4 +42,20 @@ export class UserService {
   public getPlaylists(userId: string) : Observable<Playlist[]> {
     return this.httpClient.get<Playlist[]>(`${this.url}/${userId}/Playlists`);
   }
+
+  public favoriteSong(userId: string, songId: string) : Observable<User> {
+    return this.httpClient.post<User>(`${this.url}/Favoritar`, 
+    {
+      idUser: userId,
+      idSong: songId
+    });
+  }
+
+  public unfavoriteSong(userId: string, songId: string) : Observable<User> {
+    return this.httpClient.post<User>(`${this.url}/Desfavoritar`, 
+    {
+      idUser: userId,
+      idSong: songId
+    });
+  }
 }

@@ -45,4 +45,9 @@ export class AppComponent {
   public goToLogin() {
     this.router.navigate([""]);
   }
+
+  public logout() {
+    sessionStorage.removeItem('user');
+    this.router.navigate([""]);
+  }
 }

@@ -16,3 +16,7 @@
     margin-bottom: 15px; 
     width: 170px;
 }
+
+.spacer {
+    flex: 1;
+}

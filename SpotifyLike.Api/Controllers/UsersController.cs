@@ -150,7 +150,7 @@ namespace SpotifyLike.Api.Controllers
         }
 
         /// <summary>
-        /// Autentica um usuário a partir de e-mail e senha.
+        /// Adiciona uma nova música aos favoritos do usuário.
         /// </summary>
         [HttpPost("Favoritar")]
         public IActionResult FavoritarMusica([FromBody] FavoritarDto dto)
@@ -160,6 +160,25 @@ namespace SpotifyLike.Api.Controllers
             try
             {
                 var result = this._usuarioService.FavoritarMusica(dto.idUser, dto.idSong);
+                return Ok(result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Remove uma música dos favoritos do usuário.
+        /// </summary>
+        [HttpPost("Desfavoritar")]
+        public IActionResult DesfavoritarMusica([FromBody] FavoritarDto dto)
+        {
+            if (ModelState is { IsValid: false })
+                return BadRequest();
+            try
+            {
+                var result = this._usuarioService.DesfavoritarMusica(dto.idUser, dto.idSong);
                 return Ok(result);
             }
             catch (BusinessRuleException ex)

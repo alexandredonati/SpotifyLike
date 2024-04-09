@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { Artist } from '../model/artist';
 import { Router } from '@angular/router';
 import { ArtistService } from '../services/artist.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-explore',

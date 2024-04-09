@@ -24,7 +24,7 @@ namespace SpotifyLike.Api.Controllers
         }
 
         /// <summary>
-        /// Obtém uma coleção de músicas cujos títulos começam com a string informada.
+        /// Obtém uma coleção de músicas cujos títulos contém a string informada.
         /// </summary>
         [HttpGet("Search/{searchText}")]
         public IActionResult GetSongsStartsWith(string searchText)

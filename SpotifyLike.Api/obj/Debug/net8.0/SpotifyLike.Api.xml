@@ -46,7 +46,7 @@
         </member>
         <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtistsStartsWith(System.String)">
             <summary>
-            Obtém uma coleção de artistas cujos nomes que começam com a string informada.
+            Obtém uma coleção de artistas cujos nomes contém a string informada.
             </summary>
         </member>
         <member name="M:SpotifyLike.Api.Controllers.PlanosController.GetPlanos">
@@ -61,7 +61,7 @@
         </member>
         <member name="M:SpotifyLike.Api.Controllers.SongsController.GetSongsStartsWith(System.String)">
             <summary>
-            Obtém uma coleção de músicas cujos títulos começam com a string informada.
+            Obtém uma coleção de músicas cujos títulos contém a string informada.
             </summary>
         </member>
         <member name="M:SpotifyLike.Api.Controllers.UsersController.Create(SpotifyLike.Application.Conta.Dto.UsuarioDto)">
@@ -91,7 +91,7 @@
         </member>
         <member name="M:SpotifyLike.Api.Controllers.UsersController.GetUserPlaylists(System.Guid)">
             <summary>
-            Obtém as playlistsum usuário pelo seu ID.
+            Obtém as playlists de um usuário pelo seu ID.
             </summary>
         </member>
         <member name="M:SpotifyLike.Api.Controllers.UsersController.Login(SpotifyLike.Api.Controllers.Request.LoginRequest)">

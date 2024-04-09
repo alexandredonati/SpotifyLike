@@ -14,7 +14,7 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
         public virtual Usuario Proprietario { get; set; }
         public virtual List<Transacao> Transacoes { get; set; } = new List<Transacao>();
 
-        public void RealizarTransacao(Merchant recebedor, Monetario valor, string descricao = "")
+        public bool RealizarTransacao(Merchant recebedor, Monetario valor, string descricao = "")
         {
 
             Transacao transacao = new Transacao(this, recebedor, valor, descricao);
@@ -27,8 +27,10 @@ namespace SpotifyLike.Domain.Transacao.Aggregates
             {
                 //Diminui o limite com o valor da transacao
                 this.Limite = this.Limite - transacao.Valor;
+                transacao.Notificar();
             }
 
+            return transacao.Autorizada;
         }
 
         public void IsCartaoAtivo()

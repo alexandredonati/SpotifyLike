@@ -97,7 +97,7 @@ namespace SpotifyLike.Api.Controllers
         }
 
         /// <summary>
-        /// Obtém uma coleção de artistas cujos nomes que começam com a string informada.
+        /// Obtém uma coleção de artistas cujos nomes contém a string informada.
         /// </summary>
         [HttpGet("Search/{searchText}")]
         public IActionResult GetArtistsStartsWith(string searchText)

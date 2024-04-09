@@ -108,7 +108,7 @@ namespace SpotifyLike.Api.Controllers
         }
 
         /// <summary>
-        /// Obtém as playlistsum usuário pelo seu ID.
+        /// Obtém as playlists de um usuário pelo seu ID.
         /// </summary>
         [HttpGet("{idUser}/Playlists")]
         public IActionResult GetUserPlaylists(Guid idUser)

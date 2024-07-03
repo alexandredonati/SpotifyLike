@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj": {}
+    "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
+    "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
         "projectName": "SpotifyLike.Domain",
-        "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
+        "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
         "packagesPath": "C:\\Users\\Donati\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Donati\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj": {
+    "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj",
         "projectName": "SpotifyLike.Repository",
-        "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj",
+        "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj",
         "packagesPath": "C:\\Users\\Donati\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\obj\\",
+        "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Donati\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +83,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
-                "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj"
+              "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
+                "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj"
               }
             }
           }

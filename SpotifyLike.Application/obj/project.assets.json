@@ -3069,11 +3069,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Application\\SpotifyLike.Application.csproj",
+      "projectUniqueName": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Application\\SpotifyLike.Application.csproj",
       "projectName": "SpotifyLike.Application",
-      "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Application\\SpotifyLike.Application.csproj",
+      "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Application\\SpotifyLike.Application.csproj",
       "packagesPath": "C:\\Users\\Donati\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Application\\obj\\",
+      "outputPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Donati\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3090,11 +3090,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
-              "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj"
+            "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj": {
+              "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj"
             },
-            "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj": {
-              "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj"
+            "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj": {
+              "projectPath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj"
             }
           }
         }

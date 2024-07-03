@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/fnouDKa4ViTUD2IdOsyxVeub8ir3mq4j6n/19wjo2pw2t4UobYnGrFJfE8p2EIn/Cg91qZMS45J6RzYtHDlbA==",
+  "dgSpecHash": "T4Kb4YwXHBxWDmSza827BDdO5DiMTGVgEC9YSrGa4y1+rggvEGb1OJgOGkmoehOZp+NwHHJrBo9ZIxD8HlJ+Rg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj",
+  "projectFilePath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Repository\\SpotifyLike.Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Donati\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Donati\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

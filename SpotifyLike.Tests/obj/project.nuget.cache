@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2LJUtm1v9VJL3AgH043AzHy4wupqovjq5dVtLFwsB2HDZ3QECi3HZ4i6E58CnnaXAX1wM9Pf6/Rj6w+9fm+Wdw==",
+  "dgSpecHash": "Z1QZeUr6AyxSZq0dpSmhL6gyoCtlqn73Wt8/FXptGXAsYNqxjfR2+b1JUh6cdxnaFRGJCR0+6AXt9vHee4/8Lg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Donati\\Documents\\Infnet\\Tecnologia .NET\\Projetos\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Donati\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\Donati\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",

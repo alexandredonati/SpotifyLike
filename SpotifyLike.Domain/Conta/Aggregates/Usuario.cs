@@ -9,8 +9,8 @@ namespace SpotifyLike.Domain.Conta.Aggregates
     {
         public const string NOME_PLAYLIST_FAV = "Favoritas";
         public Guid Id { get; set; }
-        public String Nome { get; set; }
-        public String Email { get; set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
         public DateTime DataNascimento { get; set; }
         public virtual Senha Senha { get; set; }
         public virtual IList<Cartao> Cartoes { get; set; } = new List<Cartao>();

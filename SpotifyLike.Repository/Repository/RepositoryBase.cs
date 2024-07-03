@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Repository.Repository
 {
+    // o que a expressão where abaixo representa?
+
+
+
     public abstract class RepositoryBase<T> where T : class, new()
     {
-        protected SpotifyLikeContext Context { get; set; }
+        protected DbContext Context { get; set; }
 
-        public RepositoryBase(SpotifyLikeContext context)
+        public RepositoryBase(DbContext context)
         {
             Context = context;
         } 

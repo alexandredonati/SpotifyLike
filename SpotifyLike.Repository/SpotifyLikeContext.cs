@@ -4,12 +4,6 @@ using SpotifyLike.Domain.Conta.Aggregates;
 using SpotifyLike.Domain.Notificacao;
 using SpotifyLike.Domain.Streaming.Aggregates;
 using SpotifyLike.Domain.Transacao.Aggregates;
-using SpotifyLike.Repository.Mapping.Streaming;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpotifyLike.Repository
 {

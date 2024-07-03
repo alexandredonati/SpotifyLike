@@ -1,0 +1,41 @@
+﻿@model SpotifyLike.Application.Admin.Dto.UsuarioAdminDto
+
+<form method="post" asp-controller="User" asp-action="Salvar">
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Nome</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" , type="Email" })
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Senha</label>
+        <div class="col-sm-10">
+            @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <fieldset class="row mb-3" asp-for="Perfil">
+        <legend class="col-form-label col-sm-2 pt-0">Perfil</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input asp-for="Perfil" class="form-check-input" type="radio" name="Perfil" value="2" checked>
+                <label class="form-check-label" for="gridRadios1">
+                    Normal
+                </label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Perfil" class="form-check-input" type="radio" name="Perfil" value="1">
+                <label class="form-check-label" for="gridRadios2">
+                    Acesso total
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Criar</button>
+</form>

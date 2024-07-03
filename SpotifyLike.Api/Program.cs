@@ -1,3 +1,4 @@
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using SpotifyLike.Application.Conta;
@@ -23,6 +24,23 @@ builder.Services.AddDbContext<SpotifyLikeContext>(c =>
 });
 
 builder.Services.AddAutoMapper(typeof(UsuarioProfile).Assembly);
+
+builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "https://localhost:7084";
+                    options.ApiName = "Spotifylike-api";
+                    options.ApiSecret = "SpotifyLikeSecret";
+                    options.RequireHttpsMetadata = true;
+                });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("SpotifyLikeUserRoles", policy =>
+    {
+        policy.RequireClaim("role", "spotifylike-user");
+    });
+});
 
 //Repositories
 builder.Services.AddScoped<UsuarioRepository>();
@@ -63,6 +81,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

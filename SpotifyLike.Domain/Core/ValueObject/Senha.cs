@@ -9,7 +9,7 @@ namespace SpotifyLike.Domain.Core.ValueObject
 {
     public class Senha
     {
-        public String HexValue { get; set; }
+        public string HexValue { get; set; }
         public Senha() { }
         public Senha(string senhaAberta) 
         {

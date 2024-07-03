@@ -16,3 +16,21 @@ C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLik
 C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\refint\SpotifyLike.Application.dll
 C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.pdb
 C:\Users\Donati\Documents\Infnet\Tecnologia .NET\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\ref\SpotifyLike.Application.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\SpotifyLike.Application.deps.json
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\SpotifyLike.Application.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\SpotifyLike.Application.pdb
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\SpotifyLike.Domain.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\SpotifyLike.Repository.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\SpotifyLike.Domain.pdb
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\SpotifyLike.Repository.pdb
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.csproj.AssemblyReference.cache
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.AssemblyInfoInputs.cache
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.AssemblyInfo.cs
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.csproj.CoreCompileInputs.cache
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.sourcelink.json
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.csproj.CopyComplete
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\refint\SpotifyLike.Application.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.pdb
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\ref\SpotifyLike.Application.dll

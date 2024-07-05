@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SpotifyLike.Domain.Admin.Aggregates
+﻿namespace SpotifyLike.Domain.Admin.Aggregates
 {
     public class UsuarioAdmin
     {

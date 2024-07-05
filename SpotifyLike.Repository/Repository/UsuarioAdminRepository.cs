@@ -12,5 +12,11 @@ namespace SpotifyLike.Repository.Repository
         public UsuarioAdminRepository(SpotifyLikeAdminContext context) : base(context)
         {
         }
+
+        public UsuarioAdmin? GetByEmailAndPassword(string email, string senha)
+        {
+            return this.Find(x => x.Email == email &&
+                                    x.Senha == senha).FirstOrDefault();
+        }
     }
 }

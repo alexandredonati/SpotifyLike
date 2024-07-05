@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpotifyLike.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+215d3ca3fc77538dd9e06b6ed58af3f6e172d050")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40edeaf0b92dde4370bd39b4dd11c0394506af09")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpotifyLike.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpotifyLike.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

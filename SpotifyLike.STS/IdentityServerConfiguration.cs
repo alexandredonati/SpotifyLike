@@ -32,7 +32,7 @@ namespace SpotifyLike.STS
             {
                 new ApiScope()
                 {
-                    Name = "SpotifylikeScope",
+                    Name = "SpotifyLikeScope",
                     DisplayName = "SpotifyLike API",
                     UserClaims = { "spotifylike-user" } 
                 }
@@ -53,7 +53,7 @@ namespace SpotifyLike.STS
                     { 
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "SpotifylikeScope" 
+                        "SpotifyLikeScope" 
                     }
                 }
             };

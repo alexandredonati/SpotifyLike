@@ -5,18 +5,22 @@
         <label class="col-sm-2 col-form-label">Nome</label>
         <div class="col-sm-10">
             @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+            <span class="form-field-invalid" asp-validation-for="Nome"></span>
         </div>
+
     </div>
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" , type="Email" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            <span class="form-field-invalid" asp-validation-for="Email"></span>
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label">Senha</label>
         <div class="col-sm-10">
             @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+            <span class="form-field-invalid" asp-validation-for="Senha"></span>
         </div>
     </div>
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { Artist } from './model/artist';
+import { Unsubscribable } from 'rxjs';
+import { UserService } from './services/user.service';
 
 
 @Component({
@@ -15,10 +17,18 @@ import { Artist } from './model/artist';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'MusicApp';
+  userName = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
+
+  ngOnInit(): void {
+    if (sessionStorage.getItem('user_session')) {
+      let token = JSON.parse(sessionStorage.getItem('user_session') as string);
+      this.userName = token.name;
+    }
+  }
 
   public goToHome(){
     if(this.checkUserAuthenticated()){
@@ -39,7 +49,7 @@ export class AppComponent {
   }
 
   public checkUserAuthenticated(): boolean {
-    return !(sessionStorage.getItem('user') === null);
+    return !(sessionStorage.getItem('user_session') === null);
   }
 
   public goToLogin() {

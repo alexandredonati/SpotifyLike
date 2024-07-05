@@ -33,7 +33,7 @@ export class ExploreComponent implements OnInit{
     }
 
     public blockAccess(): boolean {
-      return sessionStorage.getItem('user') === null;
+      return sessionStorage.getItem('user_session') === null;
     }
 
     public goToDetails(item:Artist) {

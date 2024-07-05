@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Plano } from '../model/plano';
 import { Observable } from 'rxjs';
@@ -13,6 +13,13 @@ export class PlanoService {
   constructor(private httpClient: HttpClient) { }
 
   public getPlanos(): Observable<Plano[]> {
-    return this.httpClient.get<Plano[]>(this.url);
-}
+    return this.httpClient.get<Plano[]>(this.url, this.setAuthenticationHeader());
+  }
+
+  private setAuthenticationHeader() {
+    let token = sessionStorage.getItem('access_token');
+    return {
+      headers: new HttpHeaders().set("Authorization", `Bearer ${token}`)
+    }
+  }
 }

@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../services/user.service';
 import { User } from '../model/user';
 import { Route, Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent {
   errorMessage = '';
 
   user!: User;
+  token!: any;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -37,14 +39,14 @@ export class LoginComponent {
     this.userService.authenticate(emailValue, senhaValue).subscribe(
       {
         next: (response) => {
-          this.user = response;
-          this.errorMessage = '';
-          sessionStorage.setItem('user', JSON.stringify(this.user));
+          this.token = jwtDecode(response.access_token);
+          sessionStorage.setItem('user_session', JSON.stringify(this.token));
+          sessionStorage.setItem('access_token', this.token);
           this.router.navigate(['/home']);
         },
         error: (e) => {
           if (e.error) {
-            this.errorMessage = e.error;
+            this.errorMessage = 'Erro: ' + e.error.errordescription;
           }
         }
     });

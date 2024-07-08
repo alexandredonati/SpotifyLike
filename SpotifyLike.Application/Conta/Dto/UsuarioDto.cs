@@ -29,6 +29,6 @@ namespace SpotifyLike.Application.Conta.Dto
 
         [Required]
         public CartaoDto Cartao { get; set; }
-
+        public Guid FavoritePlaylistId { get; set; }
     }
 }

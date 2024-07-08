@@ -1,0 +1,16 @@
+﻿@model SpotifyLike.Application.Admin.Dto.UsuarioAdminDto
+
+<h1>Confirmar exclusão?</h1>
+
+<form method="post" asp-controller="User" asp-action="Excluir">
+    <div class="row mb-3" style="display:none">
+        <label class="col-sm-2 col-form-label">Nome</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+            <span class="form-field-invalid" asp-validation-for="Id"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sim</button>
+</form>
+
+<a asp-controller="User" asp-action="Index" class="btn btn-secondary" style="margin-top:10px">Não</a>

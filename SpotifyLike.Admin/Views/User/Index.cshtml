@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SpotifyLike.Application.Admin.Dto.UsuarioAdminDto>
+<h1>Users</h1>
 <div>
     <a type="button" class="btn btn-primary" href="/User/Criar">
         Criar Usuário
@@ -24,9 +25,7 @@
                     <td>@item.Email</td>
                     <td>@(item.Perfil == 1 ? "Full" : "Normal")</td>
                     <td>
-                        <a asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                        <a asp-area="Admin" asp-controller="User" asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                        <a asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                        <a asp-area="Admin" asp-controller="User" asp-action="ConfirmarExcluir" asp-route-id="@item.Id">Excluir</a>
                     </td>
                 </tr>
             }

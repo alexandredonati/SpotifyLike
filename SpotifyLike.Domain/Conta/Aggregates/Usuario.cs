@@ -5,7 +5,7 @@ using SpotifyLike.Domain.Transacao.ValueObject;
 
 namespace SpotifyLike.Domain.Conta.Aggregates
 {
-    public class Usuario
+    public class Usuario : IIdentifier
     {
         public const string NOME_PLAYLIST_FAV = "Favoritas";
         public Guid Id { get; set; }

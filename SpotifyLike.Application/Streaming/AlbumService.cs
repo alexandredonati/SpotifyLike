@@ -8,15 +8,17 @@ namespace SpotifyLike.Application.Streaming
 {
     public class AlbumService
     {
-        private AlbumRepository AlbumRepository { get; set; }
-        private ArtistRepository ArtistRepository { get; set; }
+        private AlbumRepository _albumRepository { get; set; }
+        private ArtistRepository _artistRepository { get; set; }
+        private SongRepository _songRepository { get; set; }
         private IMapper Mapper { get; set; }
 
-        public AlbumService(AlbumRepository albumRepository, IMapper mapper, ArtistRepository artistRepository)
+        public AlbumService(AlbumRepository albumRepository, IMapper mapper, ArtistRepository artistRepository, SongRepository songRepository)
         {
-            AlbumRepository = albumRepository;
+            _albumRepository = albumRepository;
             Mapper = mapper;
-            ArtistRepository = artistRepository;
+            _artistRepository = artistRepository;
+            _songRepository = songRepository;
         }
         public AlbumDto CreateAlbum(AlbumDto dto)
         {
@@ -26,7 +28,7 @@ namespace SpotifyLike.Application.Streaming
                         .Select(
                             artistId =>
                             {
-                                var artist = this.ArtistRepository.GetById(artistId);
+                                var artist = this._artistRepository.GetById(artistId);
                                 if (null != artist)
                                 {
                                     artist.AdicionarAlbum(novoAlbum);
@@ -50,32 +52,67 @@ namespace SpotifyLike.Application.Streaming
             //{
             //    this.ArtistRepository.Update(artist);
             //}
-            this.AlbumRepository.Save(novoAlbum);
+            this._albumRepository.Save(novoAlbum);
             //var outputAlbum = this.AlbumRepository.GetById(dto.Id);
             //var result = this.AlbumToAlbumDto(outputAlbum);
             var result = this.AlbumToAlbumDto(novoAlbum);
             return result;
         }
-        public AlbumDto AddSongsToAlbum(Guid albumId, IList<MusicDto> musicDto)
+        public AlbumDto AddSongToAlbum(SongDto songDto)
         {
-            var album = this.AlbumRepository.GetById(albumId);
+            var album = this._albumRepository.GetById(songDto.AlbumId);
+            if (null == album)
+            {
+                throw new BusinessRuleException("Album não encontrado.");
+            }
+            var musica = SongDtoToMusica(songDto);
+            album.AdicionarMusica(musica);
+            this._albumRepository.Update(album);
+            var result = this.AlbumToAlbumDto(album);
+            return result;
+        }
+
+        public AlbumDto AddSongsToAlbum(Guid albumId, IList<SongDto> musicDto)
+        {
+            var album = this._albumRepository.GetById(albumId);
             if (null == album)
             {
                 throw new BusinessRuleException("Album não encontrado.");
             }
             var musicas = this.Mapper.Map<IList<Musica>>(musicDto);
             album.AdicionarMusicas(musicas);
-            this.AlbumRepository.Update(album);
+            this._albumRepository.Update(album);
             var result = this.AlbumToAlbumDto(album);
             return result;
 
         }
+
+        public IEnumerable<AlbumDto> GetAllAlbums()
+        {
+            var albums = this._albumRepository.GetAll();
+            var result = albums.Select(album => AlbumToAlbumDto(album));
+            return result;
+        }
         public AlbumDto GetAlbumById(Guid id)
         {
-            var album = this.AlbumRepository.GetById(id);
+            var album = this._albumRepository.GetById(id);
             if (album == null)
                 throw new BusinessRuleException("Album não encontrado.");
             var result = AlbumToAlbumDto(album);
+            return result;
+        }
+
+        public IEnumerable<SongDto> GetAlbumSongs(Guid albumId)
+        {
+            var album = this._albumRepository.GetById(albumId);
+            if (album == null)
+                throw new BusinessRuleException("Album não encontrado.");
+            var result = album.Musicas.Select(musica => new SongDto
+            {
+                Id = musica.Id,
+                Titulo = musica.Titulo,
+                Duracao = musica.Duracao.Valor
+            });
             return result;
         }
 
@@ -85,13 +122,9 @@ namespace SpotifyLike.Application.Streaming
             {
                 Nome = dto.Nome,
             };
-            foreach (MusicDto item in dto.Musicas)
+            foreach (SongDto item in dto.Musicas)
             {
-                album.AdicionarMusica(new Musica
-                {
-                    Titulo = item.Titulo,
-                    Duracao = new SpotifyLike.Domain.Streaming.ValueObject.Duracao(item.Duracao)
-                });
+                album.AdicionarMusica(SongDtoToMusica(item));
             }
             return album;
         }
@@ -102,20 +135,41 @@ namespace SpotifyLike.Application.Streaming
             {
                 Id = album.Id,
                 Nome = album.Nome,
-                ArtistIds = album.Artistas.Select(artist => artist.Id)
+                ArtistIds = album.Artistas.Select(artist => artist.Id).ToList()
             };
             foreach (var item in album.Musicas)
             {
-                var MusicDto = new MusicDto()
+                var songDto = new SongDto()
                 {
                     Id = item.Id,
-                    Duracao = item.Duracao,
+                    Duracao = item.Duracao.Valor,
                     Titulo = item.Titulo
                 };
 
-                dto.Musicas.Add(MusicDto);
+                dto.Musicas.Add(songDto);
             }
             return dto;
+        }
+
+        public Musica SongDtoToMusica(SongDto dto)
+        {
+            return new Musica
+            {
+                Id = dto.Id,
+                Titulo = dto.Titulo,
+                Duracao = new SpotifyLike.Domain.Streaming.ValueObject.Duracao(dto.Duracao),
+                //Artistas = dto.ArtistsIds.Select(artistId => _artistRepository.GetById(artistId)).ToList(),
+                Album = _albumRepository.GetById(dto.AlbumId)
+            };
+        }
+
+        public void DeleteAlbum(Guid id)
+        {
+            var album = this._albumRepository.GetById(id);
+            if (album == null)
+                throw new BusinessRuleException("Album não encontrado.");
+
+            this._albumRepository.Delete(album);
         }
     }
 }

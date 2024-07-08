@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SpotifyLike.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Repository.Repository
 {
-    // o que a expressão where abaixo representa?
-
-
-
-    public abstract class RepositoryBase<T> where T : class, new()
+    public abstract class RepositoryBase<T> where T : class, IIdentifier, new()
     {
         protected DbContext Context { get; set; }
 
@@ -35,6 +32,16 @@ namespace SpotifyLike.Repository.Repository
 
         public void Delete(T entity)
         {
+            var local = this.Context.Set<T>()
+                .Local
+                .FirstOrDefault(entry => entry.Id.Equals(entity.Id));
+            if (local != null)
+            {
+                this.Context.Entry(local).State = EntityState.Detached;
+            }
+            
+            this.Context.Entry(entity).State = EntityState.Modified;
+
             this.Context.Remove(entity);
             this.Context.SaveChanges();
         }

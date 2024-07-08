@@ -1,0 +1,29 @@
+﻿@model SpotifyLike.Admin.Models.NewSongForm
+
+ <h1>Adicionar música</h1>
+<form method="post" asp-controller="Album" asp-action="SalvarMusicasEmAlbum">
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Nome</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Titulo, new { @class = "form-control" })
+            <span class="form-field-invalid" asp-validation-for="Titulo"></span>
+        </div>
+
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Duração</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Duracao, new { @class = "form-control" })
+            <span class="form-field-invalid" asp-validation-for="Duracao"></span>
+        </div>
+    </div>
+    <div class="row mb-3" style="display:none">
+        <label class="col-sm-2 col-form-label">Album Id</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.AlbumId, new { @class = "form-control" })
+            <span class="form-field-invalid" asp-validation-for="AlbumId"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+</form>

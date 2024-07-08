@@ -1,6 +1,6 @@
 ﻿namespace SpotifyLike.Domain.Admin.Aggregates
 {
-    public class UsuarioAdmin
+    public class UsuarioAdmin : IIdentifier
     {
         public Guid Id { get; set; }
         public string Nome { get; set; }

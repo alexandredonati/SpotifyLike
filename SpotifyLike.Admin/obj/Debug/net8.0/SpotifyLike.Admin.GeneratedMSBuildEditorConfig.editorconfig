@@ -22,6 +22,46 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Album/AdicionarAlbum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cQWRpY2lvbmFyQWxidW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Album/AdicionarMusica.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cQWRpY2lvbmFyTXVzaWNhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Album/ConfirmarExcluirAlbum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cQ29uZmlybWFyRXhjbHVpckFsYnVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Album/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Album/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Artist/Adicionar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0XEFkaWNpb25hci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Artist/ConfirmarExcluir.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0XENvbmZpcm1hckV4Y2x1aXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Artist/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aXN0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Favorites/ArtistsReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF2b3JpdGVzXEFydGlzdHNSZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Favorites/SongsReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmF2b3JpdGVzXFNvbmdzUmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,6 +76,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/User/ConfirmarExcluir.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDb25maXJtYXJFeGNsdWlyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Donati/Documents/Infnet/Projetos/SpotifyLike/SpotifyLike.Admin/Views/User/Criar.cshtml]

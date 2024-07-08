@@ -93,7 +93,7 @@ namespace SpotifyLike.Application.Conta
             return result;
         }
 
-        public IEnumerable<MusicDto> GetFavoritas(Guid id)
+        public IEnumerable<SongDto> GetFavoritas(Guid id)
         {
             var usuario = this.UsuarioRepository.GetById(id);
             if (usuario == null)
@@ -101,7 +101,7 @@ namespace SpotifyLike.Application.Conta
 
             var playlistFavoritas = usuario.Playlists.FirstOrDefault(x => x.Id == usuario.FavoritePlaylistId);
 
-            return this.Mapper.Map<IEnumerable<MusicDto>>(playlistFavoritas?.Musicas);
+            return this.Mapper.Map<IEnumerable<SongDto>>(playlistFavoritas?.Musicas);
         }
 
         public IEnumerable<PlaylistDto> GetPlaylists(Guid id)
@@ -187,6 +187,13 @@ namespace SpotifyLike.Application.Conta
 
             this.UsuarioRepository.Update(usuario);
             return this.Mapper.Map<UsuarioDto>(usuario);
+        }
+
+        public IEnumerable<Guid> GetAllFavoritePlaylistsIds()
+        {
+            var usuarios = GetUsers();
+
+            return usuarios.Select(usuario => usuario.FavoritePlaylistId);
         }
 
     }

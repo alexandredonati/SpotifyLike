@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Domain.Transacao.Aggregates
 {
-    public class Transacao
+    public class Transacao : IIdentifier
     {
         private const int INTERVALO_TRANSACAO = 2;
         private const int LIMITE_TRANSACOES_INTERVALO = 3;

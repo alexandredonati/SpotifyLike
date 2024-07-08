@@ -1,0 +1,34 @@
+﻿@model SpotifyLike.Admin.Models.AlbumViewModel
+
+<div>
+    <h1>Albums</h1>
+    <h2>@Model.Name</h2>
+    <h3>@String.Join(", ", Model.Artists.Select(x => x.Nome))</h3>
+</div>
+<div>
+    <h3>Músicas</h3>
+    <a type="button" class="btn btn-primary" asp-area="Admin" asp-controller="Album" asp-action="AdicionarMusica" asp-route-id="@Model.Id">
+        Adicionar Musica
+    </a>
+</div>
+<div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Título</th>
+                <th>Duração (segundos)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Songs)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Titulo</td>
+                    <td>@item.Duracao</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -4,7 +4,7 @@ using SpotifyLike.Domain.Transacao.ValueObject;
 
 namespace SpotifyLike.Domain.Transacao.Aggregates
 {
-    public class Cartao
+    public class Cartao : IIdentifier
     {
         public Guid Id { get; set; }
         public bool Ativo { get; set; }

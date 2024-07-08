@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Application.Streaming.Dto
 {
-    public class MusicDto
+    public class SongDto
     {
         public Guid Id { get; set; }
         public string Titulo { get; set; }
-        public Duracao Duracao { get; set; }
+        public int Duracao { get; set; }
 
         public Guid AlbumId { get; set; }
-        public List<Guid> ArtistsIds { get; set; }
+        public IEnumerable<Guid> ArtistsIds { get; set; }
     }
 }

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<SpotifyLike.Admin.Models.ReportFavoriteSongsViewModel>
+
+<h1>Músicas mais favoritadas</h1>
+
+<div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Título</th>
+                <th>Artistas</th>
+                <th>Quantidade Curtidas</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Title</td>
+                    <td>@item.Artists</td>
+                    <td>@item.LikesCount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

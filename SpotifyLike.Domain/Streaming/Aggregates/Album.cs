@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Domain.Streaming.Aggregates
 {
-    public class Album
+    public class Album : IIdentifier
     {
         public Guid Id { get; set; }
         public string Nome { get; set; } = null!;

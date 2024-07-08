@@ -12,7 +12,7 @@ namespace SpotifyLike.Application.Streaming.Dto
     {
         public Guid Id { get; set; }
         public string Titulo { get; set; }
-        public virtual List<MusicDto> Musicas { get; set; } = new List<MusicDto>();
+        public virtual List<SongDto> Musicas { get; set; } = new List<SongDto>();
         public bool IsPublica { get; set; }
         public virtual Guid ProprietarioId { get; set; }
         public DateTime DataCriacao { get; set; }

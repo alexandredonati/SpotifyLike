@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Domain.Conta.Aggregates
 {
-    public class Playlist
+    public class Playlist : IIdentifier
     {
         public Guid Id { get; set; }
         public String Titulo { get; set; }

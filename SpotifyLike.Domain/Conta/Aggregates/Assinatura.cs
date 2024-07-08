@@ -7,7 +7,7 @@ using SpotifyLike.Domain.Streaming.Aggregates;
 
 namespace SpotifyLike.Domain.Conta.Aggregates
 {
-    public class Assinatura
+    public class Assinatura : IIdentifier
     {
         public Guid Id { get; set; }
         public virtual Plano Plano { get; set; }

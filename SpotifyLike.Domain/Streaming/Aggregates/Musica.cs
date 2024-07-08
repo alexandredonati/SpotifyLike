@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Domain.Streaming.Aggregates
 {
-    public class Musica
+    public class Musica : IIdentifier
     {
         public Guid Id { get; set; }
-        public virtual IList<Artista> Artistas { get; set; } = new List<Artista>();
-        public string Titulo { get; set; } = null!;
-        public virtual Album Album { get; set; } = null!;
-        public Duracao Duracao { get; set; } = null!;
+        public virtual IList<Artista> Artistas { get; set; }
+        public string Titulo { get; set; }
+        public virtual Album Album { get; set; }
+        public Duracao Duracao { get; set; }
     }
 }

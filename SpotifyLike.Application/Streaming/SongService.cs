@@ -14,25 +14,25 @@ namespace SpotifyLike.Application.Streaming
             this.Mapper = mapper;
         }
 
-        public IEnumerable<MusicDto> GetAllSongs()
+        public IEnumerable<SongDto> GetAllSongs()
         {
             var songs = this.songRepository.GetAll();
-            return this.Mapper.Map<IEnumerable<MusicDto>>(songs);
+            return this.Mapper.Map<IEnumerable<SongDto>>(songs);
         }
 
-        public MusicDto GetSongById(Guid id)
+        public SongDto GetSongById(Guid id)
         {
             var song = this.songRepository.GetById(id);
-            return this.Mapper.Map<MusicDto>(song);
+            return this.Mapper.Map<SongDto>(song);
         }
 
-        public IEnumerable<MusicDto> SearchSongs(string searchText)
+        public IEnumerable<SongDto> SearchSongs(string searchText)
         {
             var songs = this.songRepository
                             .GetAll()
                             .Where(s => s.Titulo.ToLower().Contains(searchText.ToLower()));
 
-            return this.Mapper.Map<IEnumerable<MusicDto>>(songs);
+            return this.Mapper.Map<IEnumerable<SongDto>>(songs);
         }
     }
 }

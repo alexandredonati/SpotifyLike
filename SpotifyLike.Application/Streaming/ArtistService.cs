@@ -51,7 +51,7 @@ namespace SpotifyLike.Application.Streaming
             return result;
         }
 
-        public IEnumerable<MusicDto> GetArtistSongs(Guid IdArtista)
+        public IEnumerable<SongDto> GetArtistSongs(Guid IdArtista)
         {
             var artista = this.ArtistRepository.GetById(IdArtista);
 
@@ -60,7 +60,7 @@ namespace SpotifyLike.Application.Streaming
 
             var musicas = artista.Musicas;
 
-            var result = this.Mapper.Map<IEnumerable<MusicDto>>(musicas);
+            var result = this.Mapper.Map<IEnumerable<SongDto>>(musicas);
 
             return result;
         }
@@ -73,5 +73,14 @@ namespace SpotifyLike.Application.Streaming
 
             return this.Mapper.Map<IEnumerable<ArtistDto>>(artistas);
         }
+
+        public void DeleteArtist(Guid id)
+        {
+            var artista = this.ArtistRepository.GetById(id);
+            if (artista == null)
+                throw new BusinessRuleException("Artista não encontrado.");
+
+            this.ArtistRepository.Delete(artista);
+        }   
     }
 }

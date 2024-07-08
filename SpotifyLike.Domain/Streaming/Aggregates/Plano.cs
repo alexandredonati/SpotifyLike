@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Domain.Streaming.Aggregates
 {
-    public class Plano
+    public class Plano : IIdentifier
     {
         public Guid Id { get; set; }
         public string Tipo { get; set; }

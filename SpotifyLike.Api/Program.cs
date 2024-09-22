@@ -14,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
@@ -56,14 +57,14 @@ builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.Authenti
                 .AddIdentityServerAuthentication(options =>
                 {
                     options.Authority = "https://localhost:7084";
-                    options.ApiName = "Spotifylike-api";
+                    options.ApiName = "SpotifyLike-api";
                     options.ApiSecret = "SpotifyLikeSecret";
                     options.RequireHttpsMetadata = true;
                 });
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("SpotifyLikeUserRoles", policy =>
+    options.AddPolicy("spotifylike-role-user", policy =>
     {
         policy.RequireClaim("role", "spotifylike-user");
     });
@@ -72,6 +73,8 @@ builder.Services.AddAuthorization(options =>
 //Repositories
 builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddScoped<PlanoRepository>();
+builder.Services.AddScoped<AssinaturaRepository>();
+builder.Services.AddScoped<PlaylistRepository>();
 builder.Services.AddScoped<ArtistRepository>();
 builder.Services.AddScoped<AlbumRepository>();
 builder.Services.AddScoped<TransacaoRepository>();

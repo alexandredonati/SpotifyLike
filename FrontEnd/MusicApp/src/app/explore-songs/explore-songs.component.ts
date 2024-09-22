@@ -11,6 +11,7 @@ import { SongService } from '../services/song.service';
 import { Song } from '../model/song';
 import { UserService } from '../services/user.service';
 import { User } from '../model/user';
+import { UserSession } from '../model/userSession';
 
 @Component({
   selector: 'app-explore-songs',
@@ -21,7 +22,7 @@ import { User } from '../model/user';
 })
 export class ExploreSongsComponent implements OnInit {
   
-  user = JSON.parse(sessionStorage.getItem('user') as string) as User;
+  user = JSON.parse(sessionStorage.getItem('user_session') as string) as UserSession;
 
   public errorMessage = '';  
 
@@ -36,7 +37,7 @@ export class ExploreSongsComponent implements OnInit {
   }
 
   public blockAccess(): boolean {
-    return sessionStorage.getItem('user') === null;
+    return sessionStorage.getItem('user_session') === null;
   }
 
   public goToLogin() {

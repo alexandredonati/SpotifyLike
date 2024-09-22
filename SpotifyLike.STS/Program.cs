@@ -17,13 +17,13 @@ builder.Services.Configure<DatabaseOptions>(builder.Configuration.GetSection("Co
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
 
 builder.Services.AddIdentityServer()
-                    .AddDeveloperSigningCredential()
-                    .AddInMemoryIdentityResources(IdentityServerConfiguration.GetIdentityResources())
-                    .AddInMemoryApiResources(IdentityServerConfiguration.GetApiResources())
-                    .AddInMemoryApiScopes(IdentityServerConfiguration.GetApiScopes())
-                    .AddInMemoryClients(IdentityServerConfiguration.GetClients())
-                    .AddProfileService<ProfileService>()
-                    .AddResourceOwnerValidator<ResourceOwnerValidation>();
+                .AddDeveloperSigningCredential()
+                .AddInMemoryIdentityResources(IdentityServerConfiguration.GetIdentityResources())
+                .AddInMemoryApiResources(IdentityServerConfiguration.GetApiResources())
+                .AddInMemoryApiScopes(IdentityServerConfiguration.GetApiScopes())
+                .AddInMemoryClients(IdentityServerConfiguration.GetClients())
+                .AddProfileService<ProfileService>()
+                .AddResourceOwnerValidator<ResourceOwnerValidation>();
 
 var app = builder.Build();
 

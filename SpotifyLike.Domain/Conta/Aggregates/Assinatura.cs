@@ -14,6 +14,7 @@ namespace SpotifyLike.Domain.Conta.Aggregates
         public DateTime DataInicio { get; set; }
         public DateTime DataVencimento { get; set; }
         public Boolean Ativo { get; set; }
+        public Guid UsuarioId { get; set; }
 
         public Assinatura() { }
         public Assinatura(Plano plano)

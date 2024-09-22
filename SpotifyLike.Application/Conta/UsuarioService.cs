@@ -15,15 +15,17 @@ namespace SpotifyLike.Application.Conta
         private IMapper Mapper { get; set; }
         private UsuarioRepository UsuarioRepository { get; set; }
         private PlanoRepository PlanoRepository { get; set; }
+        private AssinaturaRepository AssinaturaRepository { get; set; }
         private TransacaoRepository TransacaoRepository { get; set; }
         private SongRepository SongRepository { get; set; }
 
 
-        public UsuarioService(IMapper mapper, UsuarioRepository usuarioRepository, PlanoRepository planoRepository, TransacaoRepository transacaoRepository, SongRepository songRepository)
+        public UsuarioService(IMapper mapper, UsuarioRepository usuarioRepository, PlanoRepository planoRepository, AssinaturaRepository assinaturaRepository, TransacaoRepository transacaoRepository, SongRepository songRepository)
         {
             Mapper = mapper;
             UsuarioRepository = usuarioRepository;
             PlanoRepository = planoRepository;
+            AssinaturaRepository = assinaturaRepository;
             TransacaoRepository = transacaoRepository;
             SongRepository = songRepository;
         }
@@ -69,11 +71,10 @@ namespace SpotifyLike.Application.Conta
             if (null == cartao)
                 throw new BusinessRuleException("Usuário não possui cartão ativo.");
 
-            usuario.AtualizarAssinatura(plano, cartao);
+            (var novaAssinatura, var novaTransacao) = usuario.AtualizarAssinatura(plano, cartao);
 
-            //var novaTransacao = usuario.Cartoes.FirstOrDefault(x => x.Ativo).Transacoes.Last();
-
-            //this.TransacaoRepository.Save(novaTransacao);
+            this.AssinaturaRepository.Save(novaAssinatura);
+            this.TransacaoRepository.Save(novaTransacao);
 
             this.UsuarioRepository.Update(usuario);
             var result = this.Mapper.Map<UsuarioDto>(usuario);
@@ -194,6 +195,19 @@ namespace SpotifyLike.Application.Conta
             var usuarios = GetUsers();
 
             return usuarios.Select(usuario => usuario.FavoritePlaylistId);
+        }
+
+        public SubscriptionDto GetSubscription(Guid userId)
+        {
+            var usuario = this.UsuarioRepository.GetById(userId);
+            if (usuario == null)
+                throw new BusinessRuleException("Usuário não encontrado.");
+
+            var assinatura = usuario.Assinaturas.FirstOrDefault(a => a.Ativo);
+            if (assinatura == null)
+                throw new BusinessRuleException("Usuário não possui assinatura ativa.");
+
+            return this.Mapper.Map<SubscriptionDto>(assinatura);
         }
 
     }

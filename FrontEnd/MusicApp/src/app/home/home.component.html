@@ -1,5 +1,5 @@
 <div class="content" *ngIf="!blockAccess()">
-    <h1> Bem vindo, {{user.nome}} ! </h1>
+    <h1> Bem vindo, {{userSession.name}} ! </h1>
     <hr style="border-color: dimgray; margin-right: 20px;" />
     <br />
     <mat-accordion>
@@ -10,11 +10,10 @@
             Dados da conta
           </mat-panel-title>
         </mat-expansion-panel-header>
-          <p>ID do Usuário: {{user.id}}</p>
-          <p>Nome: {{user.nome}}</p>
-          <p>E-mail: {{user.email}}</p>
-          <p>Data de Nascimento: {{strDataNascimento}}</p>
-          <p *ngIf="planoSelecionado">Plano: {{planoSelecionado.tipo}} - R$ {{planoSelecionado.valor}}</p>
+          <p>ID do Usuário: {{userSession.sub}}</p>
+          <p>Nome: {{userSession.name}}</p>
+          <p>E-mail: {{userSession.email}}</p>
+          <p *ngIf="planoSelecionado">Plano: {{planoSelecionado.tipo}} (R$ {{planoSelecionado.valor}}) - {{planoSelecionado.descricao}}</p>
       </mat-expansion-panel>
     </mat-accordion>
     <br />
@@ -29,10 +28,10 @@
         <mat-card *ngFor="let song of favoritas" style="margin-bottom: 10px;">
           <mat-card-header>
             <mat-card-title>{{song.titulo}}</mat-card-title>
-            <mat-card-subtitle>Duração: {{song.duracao.valor}} s</mat-card-subtitle>
+            <mat-card-subtitle>Duração: {{song.duracao}} s</mat-card-subtitle>
           </mat-card-header>
           <mat-card-actions align="end">
-            <button mat-button (click)="unfavoriteSong(user.id, song.id)">
+            <button mat-button (click)="unfavoriteSong(userSession.sub, song.id)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card-actions>
@@ -51,7 +50,7 @@
             {{item.titulo}} 
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p *ngFor="let song of item.musicas">{{song.titulo}} - {{song.duracao.valor}}s</p>
+        <p *ngFor="let song of item.musicas">{{song.titulo}} - {{song.duracao}}s</p>
         <p *ngIf="item.musicas.length == 0">Nenhuma música na playlist.</p>
       </mat-expansion-panel>
     </mat-accordion>

@@ -10,6 +10,7 @@ import { ArtistService } from '../services/artist.service';
 import { Album } from '../model/album';
 import { UserService } from '../services/user.service';
 import { User } from '../model/user';
+import { UserSession } from '../model/userSession';
 
 @Component({
   selector: 'app-detail-artist',
@@ -20,7 +21,7 @@ import { User } from '../model/user';
 })
 export class DetailArtistComponent implements OnInit{
 
-    user = JSON.parse(sessionStorage.getItem('user') as string) as User;
+    user = JSON.parse(sessionStorage.getItem('user_session') as string) as UserSession;
     
     panelOpenState = false;
 
@@ -44,7 +45,7 @@ export class DetailArtistComponent implements OnInit{
     };
 
     public blockAccess(): boolean {
-      return sessionStorage.getItem('user') === null;
+      return sessionStorage.getItem('user_session') === null;
     };
   
     public goToLogin() {

@@ -63,13 +63,11 @@ namespace SpotifyLike.Api.Controllers
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-            //var result = this._usuarioService.GetUsers();
-            this._usuarioService.TestMethod();
-            //if (result == null)
-            //    return NotFound();
+            var result = this._usuarioService.GetUsers();
+            if (result == null)
+                return NotFound();
 
-            //return Ok(result);
-            return Ok();
+            return Ok(result);
         }
 
         /// <summary>
@@ -181,6 +179,20 @@ namespace SpotifyLike.Api.Controllers
             try
             {
                 var result = this._usuarioService.DesfavoritarMusica(dto.idUser, dto.idSong);
+                return Ok(result);
+            }
+            catch (BusinessRuleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{idUser}/AssinaturaAtiva")]
+        public IActionResult GetAssinaturaAtiva(Guid idUser)
+        {
+            try
+            {
+                var result = this._usuarioService.GetSubscription(idUser);
                 return Ok(result);
             }
             catch (BusinessRuleException ex)

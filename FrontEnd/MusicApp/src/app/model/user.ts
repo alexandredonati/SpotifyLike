@@ -2,7 +2,7 @@ import { Cartao } from "./cartao";
 
 export interface User {
     id: string,
-    nome: string,
+    name: string,
     email: string,
     dataNascimento: string,
     senha: string,

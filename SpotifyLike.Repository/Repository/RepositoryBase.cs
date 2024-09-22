@@ -21,13 +21,28 @@ namespace SpotifyLike.Repository.Repository
         public void Save(T entity)
         {
             this.Context.Add(entity);
-            this.Context.SaveChanges();
+            try
+            {
+                this.Context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new Exception("Erro ao atualizar o registro", ex);
+            }
         }
 
         public void Update(T entity) 
         {
             this.Context.Update(entity);
-            this.Context.SaveChanges();
+            try
+            {
+                this.Context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new Exception("Erro ao atualizar o registro", ex);
+            }
+            
         }
 
         public void Delete(T entity)

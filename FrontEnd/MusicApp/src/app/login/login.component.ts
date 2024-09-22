@@ -41,12 +41,12 @@ export class LoginComponent {
         next: (response) => {
           this.token = jwtDecode(response.access_token);
           sessionStorage.setItem('user_session', JSON.stringify(this.token));
-          sessionStorage.setItem('access_token', this.token);
+          sessionStorage.setItem('access_token', response.access_token);
           this.router.navigate(['/home']);
         },
         error: (e) => {
           if (e.error) {
-            this.errorMessage = 'Erro: ' + e.error.errordescription;
+            this.errorMessage = 'Erro: ' + e.error.error_description;
           }
         }
     });

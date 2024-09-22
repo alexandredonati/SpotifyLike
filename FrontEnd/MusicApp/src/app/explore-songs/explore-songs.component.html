@@ -15,16 +15,16 @@
     <mat-card *ngFor="let item of songs" style="margin-bottom: 10px;">
         <mat-card-header>
           <mat-card-title>{{item.titulo}}</mat-card-title>
-          <mat-card-subtitle>Duração: {{item.duracao.valor}} s</mat-card-subtitle>
+          <mat-card-subtitle>Duração: {{item.duracao}} s</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions align="end">
-          <button mat-button (click)="favoriteSong(user.id, item.id)">
+          <button mat-button (click)="favoriteSong(user.sub, item.id)">
             <mat-icon>favorite</mat-icon>
           </button>
         </mat-card-actions>
     </mat-card>
 
-<div *ngIf="blockAccess()">
+<div class="content" *ngIf="blockAccess()">
   <h1>ACESSO NEGADO</h1>
   <h2>Você precisa se autenticar para acessar a aplicação</h2>
   <button mat-raised-button color="primary" (click)="goToLogin()">Log in</button>

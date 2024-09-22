@@ -20,7 +20,7 @@ namespace SpotifyLike.Domain.Conta.Aggregates
         public virtual IList<Notificacao.Notificacao> Notificacoes { get; set; } = new List<Notificacao.Notificacao>();
 
 
-        public void CriarConta(string nome, string email, string senha, DateTime dataNascimento, Cartao cartao, Plano plano) 
+        public void CriarConta(string nome, string email, string senha, DateTime dataNascimento, Cartao cartao, Plano plano)
         {
             this.Nome = nome;
             this.Email = email;
@@ -53,10 +53,10 @@ namespace SpotifyLike.Domain.Conta.Aggregates
             this.Cartoes.Add(cartao);
         }
 
-        public void AtualizarAssinatura(Plano plano, Cartao cartao)
+        public (Assinatura, Transacao.Aggregates.Transacao) AtualizarAssinatura(Plano plano, Cartao cartao)
         {
             //Debitar o valor do plano no cartao
-            cartao.RealizarTransacao(new Merchant() { Nome = plano.Tipo }, new Monetario(plano.Valor), plano.Descricao);
+            var novaTransacao = cartao.RealizarTransacao(new Merchant() { Nome = plano.Tipo }, new Monetario(plano.Valor), plano.Descricao);
 
             //Desativo caso tenha alguma assinatura ativa
             DesativarAssinaturaAtiva();
@@ -66,6 +66,8 @@ namespace SpotifyLike.Domain.Conta.Aggregates
 
             //Adiciona uma nova assinatura
             this.Assinaturas.Add(novaAssinatura);
+
+            return (novaAssinatura, novaTransacao);
         }
 
         private void DesativarAssinaturaAtiva()

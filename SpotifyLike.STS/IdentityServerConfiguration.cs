@@ -10,7 +10,7 @@ namespace SpotifyLike.STS
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                //new IdentityResources.Profile()
+                new IdentityResources.Profile()
             };
         }
 
@@ -18,10 +18,10 @@ namespace SpotifyLike.STS
         {
             return new List<ApiResource>
             {
-                new ApiResource("Spotifylike-api", "SpotifyLike", new string[] { "spotifylike-user"})
+                new ApiResource("SpotifyLike-api", "SpotifyLike", new string[] { "spotifylike-user"})
                 {
                     ApiSecrets = { new Secret("SpotifyLikeSecret".Sha256()) },
-                    Scopes = { "SpotifylikeScope" }
+                    Scopes = { "SpotifyLikeScope" }
                 }
             };
         }

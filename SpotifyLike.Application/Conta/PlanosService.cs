@@ -34,6 +34,13 @@ namespace SpotifyLike.Application.Conta
             return planos.Select(p => PlanoToPlanoDto(p));
         }
 
+        public PlanoDto GetPlanoById(Guid id)
+        {
+            var plano = this.PlanoRepository.GetById(id);
+
+            return PlanoToPlanoDto(plano);
+        }
+
         public PlanoDto PlanoToPlanoDto(Plano plano)
         {
             return new PlanoDto()

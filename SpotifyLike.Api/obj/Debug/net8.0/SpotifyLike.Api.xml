@@ -54,6 +54,11 @@
             Obtém uma coleção com todos os planos disponíveis.
             </summary>
         </member>
+        <member name="M:SpotifyLike.Api.Controllers.PlanosController.GetPlanoById(System.Guid)">
+            <summary>
+            Obtém um plano pelo seu ID.
+            </summary>
+        </member>
         <member name="M:SpotifyLike.Api.Controllers.SongsController.GetAllSongs">
             <summary>
             Obtém uma coleção com todas as músicas registradas na aplicação.

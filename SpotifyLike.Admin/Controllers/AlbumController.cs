@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SpotifyLike.Admin.Models;
 using SpotifyLike.Application.Streaming;
 using SpotifyLike.Application.Streaming.Dto;
 
 namespace SpotifyLike.Admin.Controllers
 {
+    [Authorize]
     public class AlbumController : Controller
     {
         private AlbumService _albumService { get; set; }

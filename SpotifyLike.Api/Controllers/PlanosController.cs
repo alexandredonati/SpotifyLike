@@ -25,5 +25,20 @@ namespace SpotifyLike.Api.Controllers
 
             return Ok(result);
         }
+
+        /// <summary>
+        /// Obtém um plano pelo seu ID.
+        /// </summary>
+        [HttpGet("{id}")]
+        public IActionResult GetPlanoById(Guid id)
+        {
+            var result = this._planoService.GetPlanoById(id);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
     }
 }

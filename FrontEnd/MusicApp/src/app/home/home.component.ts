@@ -13,6 +13,10 @@ import { Song } from '../model/song';
 import { Playlist } from '../model/playlist';
 import { Plano } from '../model/plano';
 import { PlanoService } from '../services/plano.service';
+import { UserSession } from '../model/userSession';
+import { Subscription } from '../model/subscription';
+import { firstValueFrom } from 'rxjs'
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -24,17 +28,19 @@ import { PlanoService } from '../services/plano.service';
 export class HomeComponent implements OnInit{
 
     public artists = null;
-    user = JSON.parse(sessionStorage.getItem('user') as string) as User;
+    userSession = JSON.parse(sessionStorage.getItem('user_session') as string) as UserSession;
 
     favoritas: Song[] = [];
+    
 
     playlists: Playlist[] = [];
 
+    subscription!: Subscription;
     planos:Plano[] = [];
     planoSelecionado!: Plano;
 
-    dataNascimento = new Date(this.user.dataNascimento);
-    strDataNascimento = this.dataNascimento.getDate() + '/' + (this.dataNascimento.getMonth() + 1) + '/' + this.dataNascimento.getFullYear();
+    //dataNascimento = new Date(this.user.dataNascimento);
+    //strDataNascimento = this.dataNascimento.getDate() + '/' + (this.dataNascimento.getMonth() + 1) + '/' + this.dataNascimento.getFullYear();
 
     constructor(private artistService: ArtistService, private userService: UserService, private planoSevice: PlanoService, private router: Router){}
 
@@ -42,11 +48,12 @@ export class HomeComponent implements OnInit{
 
       this.getFavoritas();
       this.getPlaylists();
-      this.getPlanos();
+      //this.getActiveSubscription()
+      this.getPlanoSelecionado();
     };
 
     public blockAccess(): boolean {
-      return sessionStorage.getItem('user') === null;
+      return sessionStorage.getItem('user_session') === null;
     };
 
 
@@ -58,8 +65,8 @@ export class HomeComponent implements OnInit{
       this.router.navigate([""]);
     };
 
-    public getFavoritas() {
-      this.userService.getFavorites(this.user?.id as string).subscribe(
+    public async getFavoritas() {
+      await this.userService.getFavorites(this.userSession?.sub as string).subscribe(
         {
           next: (response) => {
             this.favoritas = response;
@@ -71,8 +78,8 @@ export class HomeComponent implements OnInit{
       );
     };
 
-    public getPlaylists() {
-      this.userService.getPlaylists(this.user?.id as string).subscribe(
+    public async getPlaylists() {
+      await this.userService.getPlaylists(this.userSession?.sub as string).subscribe(
         {
           next: (response) => {
             this.playlists = response;
@@ -84,22 +91,30 @@ export class HomeComponent implements OnInit{
       );
     };
 
-    public getPlanos() {
-      this.planoSevice.getPlanos().subscribe(
+    public getPlanoSelecionado() {
+
+      this.userService.getActiveSubscription(this.userSession?.sub as string).subscribe(
         {
           next: (response) => {
-            this.planos = response;
-            this.planoSelecionado = this.planos.find(p => p.id === this.user.planoId) as Plano;
+            this.subscription = response;
           },
           error: (e) => {
-            console.log(e.error);
+            console.log(e);
+          },
+          complete: () => {
+            this.planoSevice.getPlanoById(this.subscription.planoId).subscribe(
+              {
+                next: (response) => {
+                  this.planoSelecionado = response;
+                },
+                error: (e) => {
+                  console.log(e);
+                }
+              }
+            );
           }
-        });
-    }
-
-    public async getPlanoSelecionado() {
-      await this.getPlanos();
-      this.planoSelecionado = this.planos.find(p => p.id === this.user.planoId) as Plano;
+        }
+      );
     };
 
     public async unfavoriteSong(idUser: string, idSong: string) {

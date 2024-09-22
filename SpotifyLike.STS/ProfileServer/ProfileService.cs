@@ -20,7 +20,6 @@ namespace SpotifyLike.STS.ProfileServer
 
             var claims = new List<Claim>()
             {
-                new Claim("iss", "SpotifyLike.STS"),
                 new Claim("name", user.Nome),
                 new Claim("email", user.Email),
                 new Claim("role", "spotifylike-user")

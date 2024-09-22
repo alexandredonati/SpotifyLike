@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SpotifyLike.Api</name>
+    </assembly>
+    <members>
+        <member name="M:SpotifyLike.Api.Controllers.AlbumsController.GetAlbumById(System.Guid)">
+            <summary>
+            Obtém um álbum pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.AlbumsController.NewAlbum(SpotifyLike.Application.Streaming.Dto.AlbumDto)">
+            <summary>
+            Adiciona um novo álbum.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.AlbumsController.AddSongs(SpotifyLike.Application.Streaming.Dto.AlbumDto)">
+            <summary>
+            Adiciona novas músicas a um álbum existente.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtists">
+            <summary>
+            Obtém uma coleção com todos os artistas.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtistById(System.Guid)">
+            <summary>
+            Obtém um artista pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.NewArtist(SpotifyLike.Application.Streaming.Dto.ArtistDto)">
+            <summary>
+            Adiciona um novo artista.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtistAlbums(System.Guid)">
+            <summary>
+            Obtém uma coleção com todos os albums de um artista.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtistSongs(System.Guid)">
+            <summary>
+            Obtém uma coleção com todas as músicas de um artista.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.ArtistsController.GetArtistsStartsWith(System.String)">
+            <summary>
+            Obtém uma coleção de artistas cujos nomes contém a string informada.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.PlanosController.GetPlanos">
+            <summary>
+            Obtém uma coleção com todos os planos disponíveis.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.PlanosController.GetPlanoById(System.Guid)">
+            <summary>
+            Obtém um plano pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.SongsController.GetAllSongs">
+            <summary>
+            Obtém uma coleção com todas as músicas registradas na aplicação.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.SongsController.GetSongsStartsWith(System.String)">
+            <summary>
+            Obtém uma coleção de músicas cujos títulos contém a string informada.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.Create(SpotifyLike.Application.Conta.Dto.UsuarioDto)">
+            <summary>
+            Adiciona um novo usuário
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.UpdateSubscription(SpotifyLike.Application.Conta.Dto.SubscriptionDto)">
+            <summary>
+            Atualiza a assinatura de um usuário existente
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.GetAllUsers">
+            <summary>
+            Obtém uma coleção com todos os usuários cadastrados.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.Obter(System.Guid)">
+            <summary>
+            Obtém um usuário pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.GetUserFavoriteSongs(System.Guid)">
+            <summary>
+            Obtém as musicas favoritas de um usuário pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.GetUserPlaylists(System.Guid)">
+            <summary>
+            Obtém as playlists de um usuário pelo seu ID.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.Login(SpotifyLike.Api.Controllers.Request.LoginRequest)">
+            <summary>
+            Autentica um usuário a partir de e-mail e senha.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.FavoritarMusica(SpotifyLike.Application.Conta.Dto.FavoritarDto)">
+            <summary>
+            Adiciona uma nova música aos favoritos do usuário.
+            </summary>
+        </member>
+        <member name="M:SpotifyLike.Api.Controllers.UsersController.DesfavoritarMusica(SpotifyLike.Application.Conta.Dto.FavoritarDto)">
+            <summary>
+            Remove uma música dos favoritos do usuário.
+            </summary>
+        </member>
+    </members>
+</doc>

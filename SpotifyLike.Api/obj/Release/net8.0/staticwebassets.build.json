@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "fcMbJFVkmkDGPMb5rMXMa7OFAHbymioPHAO9+PyncYQ=",
+  "Source": "SpotifyLike.Api",
+  "BasePath": "_content/SpotifyLike.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

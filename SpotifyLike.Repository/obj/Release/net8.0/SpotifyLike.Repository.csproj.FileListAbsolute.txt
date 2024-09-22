@@ -1,0 +1,16 @@
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\bin\Release\net8.0\SpotifyLike.Repository.deps.json
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\bin\Release\net8.0\SpotifyLike.Repository.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\bin\Release\net8.0\SpotifyLike.Repository.pdb
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\bin\Release\net8.0\SpotifyLike.Domain.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\bin\Release\net8.0\SpotifyLike.Domain.pdb
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.csproj.AssemblyReference.cache
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.AssemblyInfoInputs.cache
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.AssemblyInfo.cs
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.sourcelink.json
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.csproj.CopyComplete
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\refint\SpotifyLike.Repository.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\SpotifyLike.Repository.pdb
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Repository\obj\Release\net8.0\ref\SpotifyLike.Repository.dll

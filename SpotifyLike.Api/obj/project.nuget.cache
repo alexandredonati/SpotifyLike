@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r64T5h6pWP6f0aTrngt20OER/SIx9g90KDYpFb9CrID2IqWbsf/J74eJNN39z2H92geSV4nWBRnU62lyYOw7yw==",
+  "dgSpecHash": "5aMGtTJd+XGxxAr1pyM6k4+MaoJtKhKyZ4B4baQt7m2uaApVcvDmyjREi3EsymrozExKlU6k3ZmBImg+Fjw2Ig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Api\\SpotifyLike.Api.csproj",
+  "projectFilePath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.API\\SpotifyLike.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Donati\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Donati\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

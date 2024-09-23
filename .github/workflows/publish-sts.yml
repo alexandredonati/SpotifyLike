@@ -1,6 +1,7 @@
 name: Spotify STS Build
 
 env:
+  AZURE_WEBAPP_NAME: spotifylike-sectokenservice
   DOTNET_VERSION: '8'       
 
 on:
@@ -48,7 +49,28 @@ jobs:
           file: SpotifyLike.STS/Dockerfile
           context: .
           tags: ${{secrets.REGISTRY_LOGIN_SERVER}}/spotify-sts:${{github.sha}}
-      
+
+  deploy:
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Development'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Lowercase the repo name and username
+        run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_STS }}
+          images: '${{secrets.REGISTRY_LOGIN_SERVER}}/spotify-sts:${{ github.sha }}'
+
 
       
 

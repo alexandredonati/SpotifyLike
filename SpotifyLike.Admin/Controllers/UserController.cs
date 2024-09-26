@@ -36,7 +36,7 @@ namespace SpotifyLike.Admin.Controllers
             {               
                 return View("Criar");
             }
-            _usuarioAdminService.Salvar(dto);
+            var result = _usuarioAdminService.Salvar(dto);
             return RedirectToAction("Index");
         }
 

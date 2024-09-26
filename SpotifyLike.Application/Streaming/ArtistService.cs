@@ -10,16 +10,22 @@ namespace SpotifyLike.Application.Streaming
     {
         private ArtistRepository ArtistRepository { get; set; }
         private IMapper Mapper { get; set; }
+        private AzureStorageAccount AzureStorageAccount { get; set; }
 
-        public ArtistService(ArtistRepository artistRepository, IMapper mapper)
+        public ArtistService(ArtistRepository artistRepository, IMapper mapper, AzureStorageAccount azureStorageAccount)
         {
             ArtistRepository = artistRepository;
             Mapper = mapper;
+            AzureStorageAccount = azureStorageAccount;
         }
 
-        public ArtistDto CreateArtist(ArtistDto dto)
+        public async Task<ArtistDto> CreateArtist(ArtistDto dto)
         {
             Artista artista = this.Mapper.Map<Artista> (dto);
+
+            var urlBackdrop = await this.AzureStorageAccount.UploadImage(dto.Backdrop);
+            artista.Backdrop = urlBackdrop;
+
             this.ArtistRepository.Save(artista);
 
             return this.Mapper.Map<ArtistDto>(artista);

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using SpotifyLike.Application.Admin.Dto;
+using SpotifyLike.Application.Admin.Profile;
 using SpotifyLike.Domain;
 using SpotifyLike.Domain.Admin.Aggregates;
 using SpotifyLike.Domain.Admin.ValueObject;
@@ -22,38 +23,41 @@ namespace SpotifyLike.Application.Admin
             this.mapper = mapper;
         }
 
-        public IEnumerable<UsuarioAdminDto> GetAll()
+        public async Task<IEnumerable<UsuarioAdminDto>> GetAll()
         {
-            var result = this.Repository.GetAll();
+            var result = await this.Repository.ReadAllItems<UsuarioAdmin>();
 
             return this.mapper.Map<IEnumerable<UsuarioAdminDto>>(result);
         }
 
-        public UsuarioAdminDto GetById(Guid id)
+        public async Task<UsuarioAdminDto> GetById(Guid id)
         {
-            var result = this.Repository.GetById(id);
+            var result = await this.Repository.ReadItem<UsuarioAdmin>(id.ToString());
             return this.mapper.Map<UsuarioAdminDto>(result);
         }
 
-        public void Salvar(UsuarioAdminDto dto)
+        public async Task<UsuarioAdmin> Salvar(UsuarioAdminDto dto)
         {
             var usuario = this.mapper.Map<UsuarioAdmin>(dto);
-            this.Repository.Save(usuario);
+            usuario.Id = Guid.NewGuid();
+            await this.Repository.SaveOrUpdate(usuario, usuario.PartitionKey);
+
+            return this.mapper.Map<UsuarioAdmin>(usuario);  
         }
 
-        public UsuarioAdmin Authenticate(string email, string password)
+        public async Task<UsuarioAdmin> Authenticate(string email, string password)
         {
             var passwordHash = new Senha(password).HexValue;
-            return this.Repository.GetByEmailAndPassword(email, passwordHash);
+            return await this.Repository.GetByEmailAndPassword(email, passwordHash);
         }
 
-        public void DeleteUser(Guid id)
+        public async void DeleteUser(Guid id)
         {
-            var album = this.Repository.GetById(id);
-            if (album == null)
+            var user = await this.Repository.ReadItem<UsuarioAdmin>(id.ToString());
+            if (user == null)
                 throw new BusinessRuleException("Usuário não encontrado.");
 
-            this.Repository.Delete(album);
+            this.Repository.Delete<UsuarioAdmin>(id.ToString(), "asd");
         }
     };
 }

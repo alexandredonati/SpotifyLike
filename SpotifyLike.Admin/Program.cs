@@ -39,6 +39,7 @@ builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<PlaylistRepository>();
 builder.Services.AddScoped<PlaylistService>();
+builder.Services.AddScoped<AssinaturaRepository>();
 
 
 builder.Services.AddAuthentication(options =>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Z1QZeUr6AyxSZq0dpSmhL6gyoCtlqn73Wt8/FXptGXAsYNqxjfR2+b1JUh6cdxnaFRGJCR0+6AXt9vHee4/8Lg==",
+  "dgSpecHash": "m1uT/yTfbTsqdbIipWs6p+JnxUCucvphvJs9jP6L5FjV5rlFNI+okxoJpO434ZwljiRpojihxkJsNIh7EpTYsA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Tests\\SpotifyLike.Tests.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,7 @@
     "C:\\Users\\Donati\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",
     "C:\\Users\\Donati\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.8.0\\microsoft.testplatform.objectmodel.17.8.0.nupkg.sha512",
     "C:\\Users\\Donati\\.nuget\\packages\\microsoft.testplatform.testhost\\17.8.0\\microsoft.testplatform.testhost.17.8.0.nupkg.sha512",
-    "C:\\Users\\Donati\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Donati\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Donati\\.nuget\\packages\\nuget.frameworks\\6.5.0\\nuget.frameworks.6.5.0.nupkg.sha512",
     "C:\\Users\\Donati\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
     "C:\\Users\\Donati\\.nuget\\packages\\xunit\\2.6.6\\xunit.2.6.6.nupkg.sha512",

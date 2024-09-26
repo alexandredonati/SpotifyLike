@@ -27,7 +27,7 @@ namespace SpotifyLike.Admin.Controllers
             {
                 return View();
             }
-            var usuario = _usuarioAdminService.Authenticate(request.Email, request.Senha);
+            var usuario = await _usuarioAdminService.Authenticate(request.Email, request.Senha);
 
             if (usuario == null)
             {

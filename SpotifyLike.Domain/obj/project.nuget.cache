@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Q8sSkzhDZ/OgdwMZh3+hhMrpWj28iNX2VV8Y1CVCk4OO5QhFY2tqaaGXk+gUP/jxn9byrsczaZHQd8A4XL7VOQ==",
+  "dgSpecHash": "tREezBCU5xPen+AYnG98KzovZVG9YnFFq0GVRM4Mu12Pzj46jR3po59InkkGG2pRfYU8U3cJb073S+dKECb/zg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Donati\\Documents\\Infnet\\Projetos\\SpotifyLike\\SpotifyLike.Domain\\SpotifyLike.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Donati\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

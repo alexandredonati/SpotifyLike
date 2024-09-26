@@ -34,3 +34,4 @@ C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Deb
 C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\refint\SpotifyLike.Domain.dll
 C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.pdb
 C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\ref\SpotifyLike.Domain.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Domain\obj\Debug\net8.0\SpotifyLike.Domain.csproj.AssemblyReference.cache

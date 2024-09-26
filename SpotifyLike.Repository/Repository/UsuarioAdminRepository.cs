@@ -1,4 +1,5 @@
-﻿using SpotifyLike.Domain.Admin.Aggregates;
+﻿using Microsoft.Extensions.Configuration;
+using SpotifyLike.Domain.Admin.Aggregates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace SpotifyLike.Repository.Repository
 {
-    public class UsuarioAdminRepository : RepositoryBase<UsuarioAdmin>
+    public class UsuarioAdminRepository : CosmosDBContext
     {
-        public UsuarioAdminRepository(SpotifyLikeAdminContext context) : base(context)
+        public UsuarioAdminRepository(IConfiguration configuration): base(configuration)
         {
+            this.SetContainer("users");
         }
 
-        public UsuarioAdmin? GetByEmailAndPassword(string email, string senha)
+        public async Task<UsuarioAdmin?> GetByEmailAndPassword(string email, string senha)
         {
-            return this.Find(x => x.Email == email &&
-                                    x.Senha == senha).FirstOrDefault();
+            var users = await this.ReadAllItems<UsuarioAdmin>();
+            return users.FirstOrDefault(x => x.Email == email &&
+                                    x.Senha == senha);
         }
     }
 }

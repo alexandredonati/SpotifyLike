@@ -34,3 +34,8 @@ C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\ob
 C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\refint\SpotifyLike.Application.dll
 C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\SpotifyLike.Application.pdb
 C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\obj\Debug\net8.0\ref\SpotifyLike.Application.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\Microsoft.Azure.Cosmos.ServiceInterop.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\Cosmos.CRTCompat.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\msvcp140.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\vcruntime140.dll
+C:\Users\Donati\Documents\Infnet\Projetos\SpotifyLike\SpotifyLike.Application\bin\Debug\net8.0\vcruntime140_1.dll

@@ -11,7 +11,7 @@ namespace SpotifyLike.Application.Streaming
         public AzureStorageAccount(IConfiguration configuration)
         {
             AccountName = configuration["AzureStorageAccount:AccountName"];
-            AccessKey = configuration["AzureStorageAccount:AccountName"]; ;
+            AccessKey = configuration["AzureStorageAccount:AccessKey"]; ;
         }
 
         public async Task<string> UploadImage(string base64Image)

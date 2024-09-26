@@ -45,13 +45,13 @@ namespace SpotifyLike.Api.Controllers
         /// Adiciona um novo artista.
         /// </summary>
         [HttpPost]
-        public IActionResult NewArtist([FromBody] ArtistDto dto)
+        public async Task<IActionResult> NewArtist([FromBody] ArtistDto dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
             try
             {
-                var result = this._artistService.CreateArtist(dto);
+                var result = await this._artistService.CreateArtist(dto);
                 return Created($"/artists/{result.Id}", result);
             }
             catch (BusinessRuleException ex) 

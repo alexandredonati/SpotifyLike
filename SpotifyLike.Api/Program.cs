@@ -85,6 +85,7 @@ builder.Services.AddScoped<ArtistService>();
 builder.Services.AddScoped<AlbumService>();
 builder.Services.AddScoped<PlanosService>();
 builder.Services.AddScoped<SongService>();
+builder.Services.AddScoped<AzureStorageAccount>();
 
 builder.Services.AddSwaggerGen(c =>
 {

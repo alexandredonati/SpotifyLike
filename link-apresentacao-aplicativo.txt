@@ -3,3 +3,6 @@ https://youtu.be/0924nIqBsyw
 
 Persistência e MVC [24E2_2] - Apresentação sistema Admin
 https://youtu.be/DHyYXIuEPUs
+
+Serviços em Nuvem [24E3_3]
+https://youtu.be/U9b_ZFaYm9Y

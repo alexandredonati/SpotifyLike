@@ -18,9 +18,9 @@ namespace SpotifyLike.Application.Conta
         private AssinaturaRepository AssinaturaRepository { get; set; }
         private TransacaoRepository TransacaoRepository { get; set; }
         private SongRepository SongRepository { get; set; }
+        private AzureServiceBusService ServiceBusService { get; set; }
 
-
-        public UsuarioService(IMapper mapper, UsuarioRepository usuarioRepository, PlanoRepository planoRepository, AssinaturaRepository assinaturaRepository, TransacaoRepository transacaoRepository, SongRepository songRepository)
+        public UsuarioService(IMapper mapper, UsuarioRepository usuarioRepository, PlanoRepository planoRepository, AssinaturaRepository assinaturaRepository, TransacaoRepository transacaoRepository, SongRepository songRepository, AzureServiceBusService serviceBusService)
         {
             Mapper = mapper;
             UsuarioRepository = usuarioRepository;
@@ -28,9 +28,10 @@ namespace SpotifyLike.Application.Conta
             AssinaturaRepository = assinaturaRepository;
             TransacaoRepository = transacaoRepository;
             SongRepository = songRepository;
+            ServiceBusService = serviceBusService;
         }
 
-        public UsuarioDto Create(UsuarioDto dto)
+        public async Task<UsuarioDto> Create(UsuarioDto dto)
         {
             if (this.UsuarioRepository.Exists(x => x.Email == dto.Email))
                 throw new BusinessRuleException("Usuário ja existente na base.");
@@ -47,6 +48,16 @@ namespace SpotifyLike.Application.Conta
 
             this.UsuarioRepository.Save(usuario);
             var result = this.Mapper.Map<UsuarioDto>(usuario);
+
+            //Notificar Usuário
+            var notificacao = new Notificacao
+            {
+                IdUsuario = usuario.Id,
+                Nome = usuario.Nome,
+                Mensagem = $"Bem vindo ao SpotifyLike, {usuario.Nome}"
+            };
+
+            await this.ServiceBusService.SendMessage(notificacao);
 
             return result;
 
@@ -147,7 +158,7 @@ namespace SpotifyLike.Application.Conta
             //this.UsuarioRepository.Save(novoUsuario);
         }
 
-        public UsuarioDto Authenticate(string email, string senha)
+        public async Task<UsuarioDto> Authenticate(string email, string senha)
         {
             var senhaHex = new Senha(senha);
             var user = this.UsuarioRepository.Find(x => x.Email == email && x.Senha.HexValue == senhaHex.HexValue).FirstOrDefault();
@@ -155,6 +166,17 @@ namespace SpotifyLike.Application.Conta
                 throw new BusinessRuleException("Usuário e/ou senha inválido(s).");
 
             var result = this.Mapper.Map<UsuarioDto>(user);
+
+            //Notificar Usuário
+            var notificacao = new Notificacao
+            {
+                IdUsuario = user.Id,
+                Nome = user.Nome,
+                Mensagem = $"Alerta: {user.Nome} acabou de fazer o login às {DateTime.Now}"
+            };
+
+            await this.ServiceBusService.SendMessage(notificacao);
+
             return result;        
         }
 

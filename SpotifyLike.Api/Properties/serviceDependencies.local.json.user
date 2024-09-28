@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2024-09-28T01:18:09.936984Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2024-09-28T01:18:11.9363442Z"
+    }
+  },
+  "parameters": {
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "Infnet_ServicosEmNuvem"
+    },
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "c3ead820-73ea-4dab-8ec1-e5c4718d4e19"
+    }
+  }
+}

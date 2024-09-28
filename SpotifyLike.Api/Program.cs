@@ -86,6 +86,7 @@ builder.Services.AddScoped<AlbumService>();
 builder.Services.AddScoped<PlanosService>();
 builder.Services.AddScoped<SongService>();
 builder.Services.AddScoped<AzureStorageAccount>();
+builder.Services.AddScoped<AzureServiceBusService>();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -100,6 +101,7 @@ builder.Services.AddSwaggerGen(c =>
     var filePath = Path.Combine(System.AppContext.BaseDirectory, "SpotifyLike.Api.xml");
     c.IncludeXmlComments(filePath);
 });
+builder.Services.AddApplicationInsightsTelemetry();
 
 var app = builder.Build();
 

@@ -6,7 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>false</InvariantGlobalization>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<NoWarn>1591</NoWarn> 
+	<NoWarn>1591</NoWarn>
+	<ApplicationInsightsResourceId>/subscriptions/c3ead820-73ea-4dab-8ec1-e5c4718d4e19/resourceGroups/Infnet_ServicosEmNuvem/providers/microsoft.insights/components/spotifylike-api</ApplicationInsightsResourceId>
+	<UserSecretsId>a78ec418-843b-4470-bf32-6495c474bb66</UserSecretsId> 
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
       <PrivateAssets>all</PrivateAssets>

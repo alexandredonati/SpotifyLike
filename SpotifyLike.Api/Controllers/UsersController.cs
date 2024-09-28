@@ -23,13 +23,14 @@ namespace SpotifyLike.Api.Controllers
         /// Adiciona um novo usuário
         /// </summary>
         [HttpPost]
-        public IActionResult Create([FromBody] UsuarioDto dto)
+        [AllowAnonymous]
+        public async Task<IActionResult> Create([FromBody] UsuarioDto dto)
         {
             if (ModelState is { IsValid: false})
                 return BadRequest();
             try
             {
-                var result = this._usuarioService.Create(dto);
+                var result = await this._usuarioService.Create(dto);
                 return Created($"Users/{result.Id}", result);
             }
             catch (BusinessRuleException ex)
@@ -134,13 +135,14 @@ namespace SpotifyLike.Api.Controllers
         /// Autentica um usuário a partir de e-mail e senha.
         /// </summary>
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] Request.LoginRequest dto)
+        [AllowAnonymous]
+        public async Task<IActionResult> Login([FromBody] Request.LoginRequest dto)
         {
             if (ModelState is { IsValid: false })
                 return BadRequest();
             try
             {
-                var result = this._usuarioService.Authenticate(dto.Email, dto.Senha);
+                var result = await this._usuarioService.Authenticate(dto.Email, dto.Senha);
                 return Ok(result);
             }
             catch (BusinessRuleException ex)

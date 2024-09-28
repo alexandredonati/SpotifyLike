@@ -56,10 +56,10 @@ builder.Services.AddAutoMapper(typeof(UsuarioProfile).Assembly);
 builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = "https://localhost:7084";
+                    options.Authority = "https://spotifylike-sectokenservice.azurewebsites.net";
                     options.ApiName = "SpotifyLike-api";
                     options.ApiSecret = "SpotifyLikeSecret";
-                    options.RequireHttpsMetadata = true;
+                    options.RequireHttpsMetadata = false;
                 });
 
 builder.Services.AddAuthorization(options =>

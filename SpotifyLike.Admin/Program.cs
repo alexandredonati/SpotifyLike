@@ -40,6 +40,8 @@ builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<PlaylistRepository>();
 builder.Services.AddScoped<PlaylistService>();
 builder.Services.AddScoped<AssinaturaRepository>();
+builder.Services.AddScoped<AzureStorageAccount>();
+builder.Services.AddScoped<AzureServiceBusService>();
 
 
 builder.Services.AddAuthentication(options =>

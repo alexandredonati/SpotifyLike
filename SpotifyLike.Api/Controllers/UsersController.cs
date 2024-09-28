@@ -189,6 +189,10 @@ namespace SpotifyLike.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtem assinatura ativa do usuario
+        /// </summary>
+
         [HttpGet("{idUser}/AssinaturaAtiva")]
         public IActionResult GetAssinaturaAtiva(Guid idUser)
         {
